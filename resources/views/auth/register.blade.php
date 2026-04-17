@@ -1,99 +1,194 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Daftar - SiPinjam Ruang</title>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Register</title>
 
-    @vite(['resources/css/app.css', 'resources/css/auth.css', 'resources/js/app.js'])
+@vite(['resources/css/app.css','resources/css/auth.css','resources/js/app.js'])
 </head>
 
-<body class="register-body min-h-screen flex flex-col items-center justify-center p-6 relative z-0">
+<body class="login-body min-h-screen flex items-center justify-center p-4 sm:p-6 relative overflow-hidden">
 
-    <div class="w-full max-w-md z-10">
+<!-- Background -->
+<div class="absolute top-[-10%] left-[-5%] w-[60vw] h-[60vw] sm:w-[40vw] sm:h-[40vw] bg-[#002045]/5 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+<div class="absolute bottom-[-10%] right-[-5%] w-[50vw] h-[50vw] sm:w-[30vw] sm:h-[30vw] bg-[#1a365d]/10 rounded-full blur-[100px] pointer-events-none -z-10"></div>
 
-        <div class="mb-10 text-center">
-            <h1 class="font-headline text-3xl font-extrabold tracking-tight text-[#1a365d] mb-2">SIMPRU</h1>
-            <p class="text-[#555f70] text-sm">Universitas Ma'soem</p>
-        </div>
+<main class="w-full max-w-lg z-10">
 
-        <div class="bg-white rounded-xl p-10 shadow-[0_12px_32px_-4px_rgba(24,28,30,0.06)] border border-[#c4c6cf]/15">
-            <header class="mb-8">
-                <h2 class="font-headline text-2xl font-bold text-[#181c1e] mb-1 text-center">Buat Akun</h2>
-                <p class="text-[#43474e] text-sm text-center">Lengkapi data diri Anda untuk mengakses sistem peminjaman ruangan.</p>
-            </header>
+<div class="bg-white rounded-xl shadow-lg overflow-hidden">
 
-            <form action="#" method="POST" class="space-y-6">
-                @csrf <div class="space-y-1.5">
-                    <label class="text-[10px] font-bold uppercase tracking-wider text-[#3e4758]" for="full-name">Nama Lengkap</label>
-                    <input class="w-full bg-[#e5e9eb] border-none rounded-lg px-4 py-3 text-sm text-[#181c1e] placeholder:text-[#74777f] transition-all focus:bg-white focus:ring-2 focus:ring-[#002045] focus:outline-none" id="full-name" name="name" placeholder="Masukkan nama lengkap" type="text" required>
-                </div>
+<!-- Header -->
+<div class="pt-8 sm:pt-10 pb-6 px-6 sm:px-10 flex flex-col items-center text-center">
 
-                <div class="space-y-1.5">
-                    <label class="text-[10px] font-bold uppercase tracking-wider text-[#3e4758]" for="email">Alamat Email</label>
-                    <input class="w-full bg-[#e5e9eb] border-none rounded-lg px-4 py-3 text-sm text-[#181c1e] placeholder:text-[#74777f] transition-all focus:bg-white focus:ring-2 focus:ring-[#002045] focus:outline-none" id="email" name="email" placeholder="nama@masoemuniversity.ac.id" type="email" required>
-                </div>
+<div class="mb-6 w-14 h-14 sm:w-16 sm:h-16 bg-[#e5e9eb] rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[#002045] text-3xl sm:text-4xl scale-125">person_add</span>
+</div>
 
-                <div class="space-y-1.5">
-                    <label class="text-[10px] font-bold uppercase tracking-wider text-[#3e4758]" for="id-number">NIM / NIDN</label>
-                    <input class="w-full bg-[#e5e9eb] border-none rounded-lg px-4 py-3 text-sm text-[#181c1e] placeholder:text-[#74777f] transition-all focus:bg-white focus:ring-2 focus:ring-[#002045] focus:outline-none" id="id-number" name="id_number" placeholder="Contoh: 11223344" type="text" required>
-                </div>
+<h1 class="font-headline text-xl sm:text-2xl font-extrabold text-[#002045] tracking-tight">
+SIMPRU
+</h1>
 
-                <div class="space-y-1.5">
-                    <label class="text-[10px] font-bold uppercase tracking-wider text-[#3e4758]" for="password">Kata Sandi</label>
-                    <div class="relative">
-                        <input class="w-full bg-[#e5e9eb] border-none rounded-lg px-4 py-3 text-sm text-[#181c1e] placeholder:text-[#74777f] transition-all focus:bg-white focus:ring-2 focus:ring-[#002045] focus:outline-none pr-12" id="password" name="password" placeholder="••••••••" type="password" required>
-                        <button class="absolute right-3 top-1/2 -translate-y-1/2 text-[#74777f] hover:text-[#43474e] transition-colors p-1" type="button" onclick="togglePassword('password', 'toggleIcon')">
-                            <span id="toggleIcon" class="material-symbols-outlined">visibility</span>
-                        </button>
-                    </div>
-                    <script>
-                        function togglePassword() {
-                            const input = document.getElementById("password");
-                            const icon = document.getElementById("toggleIcon");
+<p class="text-variant text-xs sm:text-sm mt-2">
+Sistem Informasi Manajemen Peminjaman Ruangan
+</p>
 
-                            if (input.type === "password") {
-                                input.type = "text";
-                                icon.textContent = "visibility_off";
-                            } else {
-                                input.type = "password";
-                                icon.textContent = "visibility";
-                            }
-                        }
-                    </script>
-                </div>
+</div>
 
-                <div class="pt-2">
-                    <button class="w-full bg-primary-gradient text-white font-headline font-bold py-3.5 rounded-lg shadow-md hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2" type="submit">
-                        Daftar
-                    </button>
-                </div>
-            </form>
+<!-- Form -->
+<form action="/register-process" method="POST" class="px-6 sm:px-10 pb-10">
 
-            <div class="mt-8 pt-8 border-t border-[#c4c6cf]/15 text-center">
-                <p class="text-sm text-[#43474e]">
-                    Sudah punya akun?
-                    <a class="text-[#002045] font-semibold hover:underline decoration-[#002045] underline-offset-4 ml-1 transition-all" href="/login">Masuk</a>
-                </p>
-            </div>
-        </div>
+@csrf
 
-        <footer class="mt-12 text-center space-y-4">
-            <div class="flex justify-center items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-[#74777f]">
-                <a class="hover:text-[#002045] transition-colors" href="#">Kebijakan Privasi</a>
-                <span class="w-1 h-1 rounded-full bg-[#c4c6cf]"></span>
-                <a class="hover:text-[#002045] transition-colors" href="#">Syarat & Ketentuan</a>
-            </div>
-            <p class="text-[10px] text-[#74777f]/60">© 2026 SiPinjam Ruang - Hak Cipta Dilindungi.</p>
-        </footer>
-    </div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-    <div class="fixed bottom-0 left-0 w-full overflow-hidden -z-10 opacity-30 pointer-events-none">
-        <svg class="w-full h-auto translate-y-20" viewBox="0 0 1440 320">
-            <path fill="#d6e3ff" fill-opacity="1" d="M0,224L80,213.3C160,203,320,181,480,186.7C640,192,800,224,960,234.7C1120,245,1280,235,1360,229.3L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
-        </svg>
-    </div>
+<!-- Full Name -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-variant px-1">
+Full Name
+</label>
+
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline-color text-xl">badge</span>
+</div>
+
+<input
+class="block w-full pl-12 pr-4 py-3 bg-[#e5e9eb] border-none rounded-lg text-sm focus:ring-2 focus:ring-[#002045]/20 outline-none"
+name="name"
+type="text"
+placeholder="Enter your full name"
+required>
+</div>
+</div>
+
+<!-- Email -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-variant px-1">
+Email
+</label>
+
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline-color text-xl">mail</span>
+</div>
+
+<input
+class="block w-full pl-12 pr-4 py-3 bg-[#e5e9eb] border-none rounded-lg text-sm focus:ring-2 focus:ring-[#002045]/20 outline-none"
+name="email"
+type="email"
+placeholder="example@email.com"
+required>
+</div>
+</div>
+
+<!-- ID Number -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-variant px-1">
+Student / Lecturer ID
+</label>
+
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline-color text-xl">badge</span>
+</div>
+
+<input
+class="block w-full pl-12 pr-4 py-3 bg-[#e5e9eb] border-none rounded-lg text-sm focus:ring-2 focus:ring-[#002045]/20 outline-none"
+name="id_number"
+type="text"
+placeholder="Enter your ID number"
+required>
+</div>
+</div>
+
+<!-- Password -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-variant px-1">
+Password
+</label>
+
+<div class="relative">
+
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline-color text-xl">lock</span>
+</div>
+
+<input
+class="block w-full pl-12 pr-12 py-3 bg-[#e5e9eb] border-none rounded-lg text-sm focus:ring-2 focus:ring-[#002045]/20 outline-none"
+id="password"
+name="password"
+type="password"
+placeholder="••••••••"
+required>
+
+<button type="button"
+onclick="togglePassword()"
+class="absolute inset-y-0 right-0 pr-3 flex items-center text-[#002045]">
+
+<span id="toggleIcon" class="material-symbols-outlined">visibility</span>
+
+</button>
+
+</div>
+</div>
+
+</div>
+
+<!-- Button -->
+<div class="mt-6">
+
+<button
+class="w-full bg-primary-gradient text-white font-headline font-bold py-3.5 rounded-lg shadow-md hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+type="submit">
+
+Create Account
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+
+</button>
+
+</div>
+
+<!-- Login Link -->
+<div class="flex justify-center pt-5">
+
+<span class="text-sm text-gray-600">
+Already have an account?
+</span>
+
+<a href="/login"
+class="text-sm font-medium text-[#002045] hover:underline underline-offset-4 ml-1">
+Sign In
+</a>
+
+</div>
+
+</form>
+
+</div>
+
+<!-- Footer -->
+<footer class="mt-8 text-center text-[#43474e]/60 text-[10px] sm:text-[11px] uppercase tracking-widest">
+© 2026 Ma'soem University • All Rights Reserved
+</footer>
+
+</main>
+
+<script>
+function togglePassword(){
+const input=document.getElementById("password");
+const icon=document.getElementById("toggleIcon");
+
+if(input.type==="password"){
+input.type="text";
+icon.textContent="visibility_off";
+}else{
+input.type="password";
+icon.textContent="visibility";
+}
+}
+</script>
 
 </body>
 </html>
