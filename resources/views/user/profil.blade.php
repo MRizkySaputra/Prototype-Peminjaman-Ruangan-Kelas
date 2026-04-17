@@ -65,11 +65,6 @@
                 <span class="material-symbols-outlined">notifications</span>
                 <span class="absolute top-0 right-0 w-2 h-2 bg-red-600 rounded-full"></span>
             </a>
-            <div class="h-8 w-px bg-slate-200 mx-2"></div>
-            <div class="flex items-center gap-3">
-                <p class="text-sm font-semibold text-[#002045] font-headline hidden sm:block">Ahmad Fauzi</p>
-                <img alt="User Avatar" class="w-8 h-8 rounded-full border border-slate-200 shadow-sm" src="https://ui-avatars.com/api/?name=Ahmad+Fauzi&background=002045&color=fff"/>
-            </div>
         </div>
     </header>
 

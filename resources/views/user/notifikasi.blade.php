@@ -41,7 +41,7 @@
             </a>
         </nav>
 
-        <div class="p-4 mt-auto border-t border-slate-200/50">
+        <!-- <div class="p-4 mt-auto border-t border-slate-200/50">
             <a href="/user/profil">
                 <div class="bg-slate-50 rounded-xl p-4 flex items-center gap-3 border border-slate-100 hover:border-slate-200 transition-colors cursor-pointer">
                     <img alt="User Profile" class="h-10 w-10 rounded-full object-cover border-2 border-white shadow-sm" src="https://ui-avatars.com/api/?name=Ahmad+Fauzi&background=002045&color=fff"/>
@@ -50,6 +50,12 @@
                         <p class="text-[10px] font-semibold text-slate-500 truncate">NIM: 2010411032</p>
                     </div>
                 </div>
+            </a>
+        </div> -->
+        <div class="p-6 mt-auto border-t border-slate-100">
+            <a href="/login" class="flex items-center gap-3 text-slate-500 hover:text-red-600 transition-colors duration-200 font-medium text-sm px-2">
+                <span class="material-symbols-outlined">logout</span>
+                Logout
             </a>
         </div>
     </aside>

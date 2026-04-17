@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -7,6 +8,7 @@
 
     @vite(['resources/css/app.css', 'resources/css/user.css', 'resources/js/app.js'])
 </head>
+
 <body class="user-body antialiased">
 
     <aside class="fixed left-0 top-0 h-full z-40 flex flex-col w-64 border-r border-slate-200 bg-slate-50 shadow-sm">
@@ -41,15 +43,10 @@
             </a> -->
         </nav>
 
-        <div class="p-4 mt-auto border-t border-slate-200/50">
-            <a href="/user/profil">
-                <div class="bg-slate-50 rounded-xl p-4 flex items-center gap-3 border border-slate-100 hover:border-slate-200 transition-colors cursor-pointer">
-                    <img alt="User Profile" class="h-10 w-10 rounded-full object-cover border-2 border-white shadow-sm" src="https://ui-avatars.com/api/?name=Ahmad+Fauzi&background=002045&color=fff"/>
-                    <div class="overflow-hidden">
-                        <p class="text-sm font-bold text-[#002045] truncate">Ahmad Fauzi</p>
-                        <p class="text-[10px] font-semibold text-slate-500 truncate">NIM: 2010411032</p>
-                    </div>
-                </div>
+        <div class="p-6 mt-auto border-t border-slate-100">
+            <a href="/login" class="flex items-center gap-3 text-slate-500 hover:text-red-600 transition-colors duration-200 font-medium text-sm px-2">
+                <span class="material-symbols-outlined">logout</span>
+                Logout
             </a>
         </div>
     </aside>
@@ -58,7 +55,7 @@
         <div class="flex items-center gap-4 flex-1">
             <div class="relative w-full max-w-md">
                 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
-                <input class="w-full pl-10 pr-4 py-2.5 bg-slate-100 border-none rounded-lg text-sm focus:ring-2 focus:ring-[#002045]/20 focus:bg-white outline-none transition-all" placeholder="Cari ruangan atau jadwal..." type="text"/>
+                <input class="w-full pl-10 pr-4 py-2.5 bg-slate-100 border-none rounded-lg text-sm focus:ring-2 focus:ring-[#002045]/20 focus:bg-white outline-none transition-all" placeholder="Cari ruangan atau jadwal..." type="text" />
             </div>
         </div>
         <div class="flex items-center gap-6">
@@ -66,14 +63,19 @@
                 <span class="material-symbols-outlined">notifications</span>
                 <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
             </a>
-            <div class="h-8 w-px bg-slate-200 mx-2"></div>
-            <span class="text-sm font-semibold text-[#002045] uppercase tracking-tight">Room Booking</span>
         </div>
+        <div class="h-8 w-px bg-slate-200 mx-2"></div>
+        <a href="/user/profil">
+            <div class="flex items-center gap-3">
+                <p class="text-sm font-semibold text-[#002045] font-headline hidden sm:block">Ahmad Fauzi</p>
+                <img alt="User Avatar" class="w-8 h-8 rounded-full border border-slate-200 shadow-sm" src="https://ui-avatars.com/api/?name=Ahmad+Fauzi&background=002045&color=fff" />
+            </div>
+        </a>
     </header>
 
     <main class="ml-64 p-8 min-h-screen bg-[#f7fafc]">
         <div class="max-w-5xl mx-auto">
-            
+
             <nav class="mb-8 flex items-center gap-2 text-sm text-slate-500">
                 <span class="material-symbols-outlined text-base">arrow_back</span>
                 <a class="hover:text-[#002045] font-medium transition-colors" href="{{ url('/user/ajukan/detail') }}">Kembali ke Pengisian Detail</a>
@@ -83,21 +85,21 @@
                 <div class="flex items-center justify-between relative">
                     <div class="absolute top-1/2 left-0 w-full h-1 bg-slate-200 -translate-y-1/2 z-0"></div>
                     <div class="absolute top-1/2 left-0 w-full h-1 bg-[#002045] -translate-y-1/2 z-0 transition-all duration-500"></div>
-                    
+
                     <div class="relative z-10 flex flex-col items-center gap-2">
                         <div class="w-10 h-10 rounded-full bg-[#002045] text-white flex items-center justify-center font-bold shadow-md">
                             <span class="material-symbols-outlined text-[20px]">check</span>
                         </div>
                         <span class="text-xs font-bold text-[#002045] uppercase tracking-wider">Pilih Ruangan</span>
                     </div>
-                    
+
                     <div class="relative z-10 flex flex-col items-center gap-2">
                         <div class="w-10 h-10 rounded-full bg-[#002045] text-white flex items-center justify-center font-bold shadow-md">
                             <span class="material-symbols-outlined text-[20px]">check</span>
                         </div>
                         <span class="text-xs font-bold text-[#002045] uppercase tracking-wider">Isi Detail</span>
                     </div>
-                    
+
                     <div class="relative z-10 flex flex-col items-center gap-2">
                         <div class="w-10 h-10 rounded-full bg-[#002045] text-white flex items-center justify-center font-bold shadow-lg shadow-[#002045]/20 ring-4 ring-white">
                             3
@@ -115,9 +117,9 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                
+
                 <div class="lg:col-span-8 space-y-6">
-                    
+
                     <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
                         <div class="flex justify-between items-start mb-8">
                             <div>
@@ -130,7 +132,7 @@
                                 <p class="font-mono text-sm text-[#002045] font-bold">#REQ-DRAFT</p>
                             </div>
                         </div>
-                        
+
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 py-6 border-t border-b border-slate-100">
                             <div>
                                 <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Tanggal Pelaksanaan</p>
@@ -154,7 +156,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="mt-6 flex items-center gap-4">
                             <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center">
                                 <span class="material-symbols-outlined text-slate-600">person</span>
@@ -179,9 +181,9 @@
 
                 <div class="lg:col-span-4 sticky top-24">
                     <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-6">
-                        
+
                         <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden group">
-                            <img alt="Ruang Teater" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=600&q=80"/>
+                            <img alt="Ruang Teater" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=600&q=80" />
                             <div class="absolute inset-0 bg-gradient-to-t from-[#002045]/80 via-transparent to-transparent"></div>
                             <div class="absolute bottom-4 left-4">
                                 <div class="flex items-center gap-2 text-white">
@@ -209,12 +211,12 @@
                                     <span class="material-symbols-outlined text-lg">send</span>
                                 </button>
                             </form>
-                            
+
                             <a href="/user/ajukan-detail" class="w-full flex items-center justify-center bg-white border border-slate-200 text-slate-600 font-headline font-bold py-3.5 rounded-xl hover:bg-slate-50 transition-colors active:scale-[0.98]">
                                 Kembali Edit
                             </a>
                         </div>
-                        
+
                         <p class="text-[10px] text-center text-slate-400 font-medium italic">
                             Dengan menekan tombol Kirim, Anda menyetujui syarat & ketentuan penggunaan ruangan universitas.
                         </p>
@@ -225,4 +227,5 @@
     </main>
 
 </body>
+
 </html>

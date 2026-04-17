@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -7,6 +8,7 @@
 
     @vite(['resources/css/app.css', 'resources/css/user.css', 'resources/js/app.js'])
 </head>
+
 <body class="user-body antialiased bg-[#f7fafc]">
 
     <aside class="fixed left-0 top-0 h-full z-40 flex flex-col w-64 border-r border-slate-200 bg-white shadow-sm">
@@ -39,18 +41,16 @@
                 <span class="material-symbols-outlined">notifications</span>
                 <span class="font-headline text-sm font-medium">Notifikasi</span>
             </a> -->
+
         </nav>
 
         <div class="p-4 mt-auto border-t border-slate-100">
-            <a href="/user/profil">
-                <div class="bg-slate-50 rounded-xl p-4 flex items-center gap-3 border border-slate-100 hover:border-slate-200 transition-colors cursor-pointer">
-                    <img alt="User Profile" class="h-10 w-10 rounded-full object-cover border-2 border-white shadow-sm" src="https://ui-avatars.com/api/?name=Ahmad+Fauzi&background=002045&color=fff"/>
-                    <div class="overflow-hidden">
-                        <p class="text-sm font-bold text-[#002045] truncate">Ahmad Fauzi</p>
-                        <p class="text-[10px] font-semibold text-slate-500 truncate">NIM: 2010411032</p>
-                    </div>
-                </div>
-            </a>
+            <div class="p-6 mt-auto border-t border-slate-100">
+                <a href="/login" class="flex items-center gap-3 text-slate-500 hover:text-red-600 transition-colors duration-200 font-medium text-sm px-2">
+                    <span class="material-symbols-outlined">logout</span>
+                    Logout
+                </a>
+            </div>
         </div>
     </aside>
 
@@ -58,7 +58,7 @@
         <div class="flex items-center flex-1">
             <div class="relative w-full max-w-md">
                 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
-                <input class="w-full pl-10 pr-4 py-2.5 bg-slate-100 border-none rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-[#002045]/20 outline-none transition-all" placeholder="Cari kode booking atau ruangan..." type="text"/>
+                <input class="w-full pl-10 pr-4 py-2.5 bg-slate-100 border-none rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-[#002045]/20 outline-none transition-all" placeholder="Cari kode booking atau ruangan..." type="text" />
             </div>
         </div>
         <div class="flex items-center gap-4">
@@ -66,14 +66,19 @@
                 <span class="material-symbols-outlined">notifications</span>
                 <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
             </a>
-            <div class="h-8 w-px bg-slate-200 mx-2"></div>
-            <span class="text-sm font-bold font-headline text-[#002045] uppercase tracking-tight">Room Booking</span>
         </div>
+        <div class="h-8 w-px bg-slate-200 mx-2"></div>
+        <a href="/user/profil">
+            <div class="flex items-center gap-3">
+                <p class="text-sm font-semibold text-[#002045] font-headline hidden sm:block">Ahmad Fauzi</p>
+                <img alt="User Avatar" class="w-8 h-8 rounded-full border border-slate-200 shadow-sm" src="https://ui-avatars.com/api/?name=Ahmad+Fauzi&background=002045&color=fff" />
+            </div>
+        </a>
     </header>
 
     <main class="ml-64 p-8 min-h-[calc(100vh-80px)]">
         <div class="max-w-6xl mx-auto">
-            
+
             <div class="mb-10">
                 <h2 class="text-3xl font-headline font-extrabold text-[#002045] mb-2">Riwayat Peminjaman</h2>
                 <p class="text-slate-500 text-sm tracking-wide">Pantau status pengajuan peminjaman ruangan Anda secara real-time.</p>
@@ -87,7 +92,7 @@
             </div>
 
             <div class="grid grid-cols-1 gap-6">
-                
+
                 <div class="bg-white rounded-xl p-6 flex flex-col md:flex-row gap-6 items-start md:items-center transition-all hover:shadow-md border border-slate-200 group">
                     <div class="w-full md:w-48 h-32 rounded-lg overflow-hidden bg-slate-100 flex-shrink-0 border border-slate-100">
                         <img alt="Lab Komputer" class="w-full h-full object-cover transition-transform group-hover:scale-105 duration-500" src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=400&q=80">
@@ -95,7 +100,6 @@
                     <div class="flex-1 space-y-2">
                         <div class="flex items-center justify-between">
                             <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500 bg-slate-100 px-2 py-1 rounded">REQ-882910</span>
-                            <span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">Disetujui</span>
                         </div>
                         <h3 class="text-xl font-headline font-bold text-[#002045]">Lab Komputer Dasar - Gedung B</h3>
                         <div class="flex flex-wrap gap-5 text-sm text-slate-500 pt-1">
@@ -109,19 +113,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-3 w-full md:w-auto md:border-l md:border-slate-100 md:pl-6">
+                    <div class="flex flex-row gap-3 w-full md:w-auto md:border-l md:border-slate-100 md:pl-6">
+                        <div class="my-auto">
+                            <span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">Disetujui</span>
+                        </div>
                         <a href="/user/riwayat-detail" class="bg-white border-2 border-[#002045] text-[#002045] text-center px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-blue-50 transition-colors w-full">Lihat Detail</a>
                     </div>
                 </div>
 
                 <div class="bg-white rounded-xl p-6 flex flex-col md:flex-row gap-6 items-start md:items-center transition-all hover:shadow-md border border-slate-200 group">
                     <div class="w-full md:w-48 h-32 rounded-lg overflow-hidden bg-slate-100 flex-shrink-0 border border-slate-100">
-                        <img alt="Ruang Teater" class="w-full h-full object-cover transition-transform group-hover:scale-105 duration-500" src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=400&q=80">
+                        <img alt="Ruang Teater" class="w-full h-full object-cover transition-transform group-hover:scale-105 duration-500" src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=400&q=80">
                     </div>
                     <div class="flex-1 space-y-2">
                         <div class="flex items-center justify-between">
                             <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500 bg-slate-100 px-2 py-1 rounded">REQ-882755</span>
-                            <span class="text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-800 border border-amber-200">Diproses</span>
                         </div>
                         <h3 class="text-xl font-headline font-bold text-[#002045]">Ruang Teater - Fakultas Seni</h3>
                         <div class="flex flex-wrap gap-5 text-sm text-slate-500 pt-1">
@@ -135,16 +141,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-3 w-full md:w-auto md:border-l md:border-slate-100 md:pl-6">
+                    <div class="flex flex-row gap-3 w-full md:w-auto md:border-l md:border-slate-100 md:pl-6">
+                        <div class="my-auto">
+                            <span class="text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-800 border border-amber-200">Diproses</span>
+                        </div>
                         <a class="bg-white border-2 border-[#002045] text-[#002045] text-center px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-blue-50 transition-colors w-full">Lihat Detail</a>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl p-6 flex flex-col md:flex-row gap-6 items-start md:items-center transition-all hover:shadow-md border border-slate-200 group">
+                <!-- <div class="bg-white rounded-xl p-6 flex flex-col md:flex-row gap-6 items-start md:items-center transition-all hover:shadow-md border border-slate-200 group">
                     <div class="w-full md:w-48 h-32 rounded-lg overflow-hidden bg-slate-100 flex-shrink-0 border border-slate-100 grayscale group-hover:grayscale-0 transition-all duration-500">
                         <img alt="Ruang Diskusi" class="w-full h-full object-cover transition-transform group-hover:scale-105 duration-500" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=400&q=80">
-                    </div>
-                    <div class="flex-1 space-y-2">
+                    </div> -->
+                <!-- <div class="flex-1 space-y-2">
                         <div class="flex items-center justify-between">
                             <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500 bg-slate-100 px-2 py-1 rounded">REQ-882601</span>
                             <span class="text-xs font-bold px-3 py-1 rounded-full bg-red-100 text-red-700 border border-red-200">Ditolak</span>
@@ -165,7 +174,7 @@
                     <div class="flex flex-col gap-3 w-full md:w-auto md:border-l md:border-slate-100 md:pl-6">
                         <a class="bg-white border-2 border-[#002045] text-[#002045] text-center px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-blue-50 transition-colors w-full">Lihat Detail</button>
                     </div>
-                </div>
+                </div> -->
 
             </div>
 
@@ -264,4 +273,5 @@
         }
     </script> -->
 </body>
+
 </html>
