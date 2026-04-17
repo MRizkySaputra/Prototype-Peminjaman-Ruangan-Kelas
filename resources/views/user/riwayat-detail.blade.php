@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -7,6 +8,7 @@
 
     @vite(['resources/css/app.css', 'resources/css/user.css', 'resources/js/app.js'])
 </head>
+
 <body class="user-body antialiased bg-[#f7fafc]">
 
     <aside class="fixed left-0 top-0 h-full z-40 flex flex-col w-64 border-r border-slate-200 bg-white shadow-sm">
@@ -41,15 +43,10 @@
             </a> -->
         </nav>
 
-        <div class="p-4 mt-auto border-t border-slate-100">
-            <a href="/user/profil">
-                <div class="bg-slate-50 rounded-xl p-4 flex items-center gap-3 border border-slate-100 hover:border-slate-200 transition-colors cursor-pointer">
-                    <img alt="User Profile" class="h-10 w-10 rounded-full object-cover border-2 border-white shadow-sm" src="https://ui-avatars.com/api/?name=Ahmad+Fauzi&background=002045&color=fff"/>
-                    <div class="overflow-hidden">
-                        <p class="text-sm font-bold text-[#002045] truncate">Ahmad Fauzi</p>
-                        <p class="text-[10px] font-semibold text-slate-500 truncate">NIM: 2010411032</p>
-                    </div>
-                </div>
+        <div class="p-6 mt-auto border-t border-slate-100">
+            <a href="/login" class="flex items-center gap-3 text-slate-500 hover:text-red-600 transition-colors duration-200 font-medium text-sm px-2">
+                <span class="material-symbols-outlined">logout</span>
+                Logout
             </a>
         </div>
     </aside>
@@ -58,7 +55,7 @@
         <div class="flex items-center flex-1">
             <div class="relative w-full max-w-md">
                 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
-                <input class="w-full pl-10 pr-4 py-2.5 bg-slate-100 border-none rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-[#002045]/20 outline-none transition-all" placeholder="Cari kode booking atau ruangan..." type="text"/>
+                <input class="w-full pl-10 pr-4 py-2.5 bg-slate-100 border-none rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-[#002045]/20 outline-none transition-all" placeholder="Cari kode booking atau ruangan..." type="text" />
             </div>
         </div>
         <div class="flex items-center gap-4">
@@ -66,13 +63,18 @@
                 <span class="material-symbols-outlined">notifications</span>
                 <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
             </a>
-            <div class="h-8 w-px bg-slate-200 mx-2"></div>
-            <span class="text-sm font-bold font-headline text-[#002045] uppercase tracking-tight">Room Booking</span>
         </div>
+        <div class="h-8 w-px bg-slate-200 mx-2"></div>
+        <a href="/user/profil">
+            <div class="flex items-center gap-3">
+                <p class="text-sm font-semibold text-[#002045] font-headline hidden sm:block">Ahmad Fauzi</p>
+                <img alt="User Avatar" class="w-8 h-8 rounded-full border border-slate-200 shadow-sm" src="https://ui-avatars.com/api/?name=Ahmad+Fauzi&background=002045&color=fff" />
+            </div>
+        </a>
     </header>
 
     <main class="ml-64 p-8 min-h-[calc(100vh-80px)] bg-[#f7fafc]">
-        
+
         <div class="max-w-5xl mx-auto mb-10">
             <nav class="flex items-center gap-2 text-sm font-medium text-slate-500 mb-6">
                 <a href="{{ url('/user/riwayat') }}" class="hover:text-[#002045] transition-colors">Riwayat Peminjaman</a>
@@ -98,9 +100,9 @@
         </div>
 
         <div class="max-w-5xl mx-auto space-y-6">
-            
+
             <section class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
-                
+
                 <div class="flex items-center justify-between mb-8 pb-6 border-b border-slate-100">
                     <h3 class="text-lg font-bold text-[#002045] flex items-center gap-2 font-headline">
                         <span class="material-symbols-outlined text-[#002045]">info</span>
@@ -111,7 +113,7 @@
                         Disetujui
                     </span>
                 </div>
-                
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12">
                     <div>
                         <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Ruangan</p>
@@ -148,7 +150,7 @@
                     <span class="material-symbols-outlined text-[#002045]">description</span>
                     Dokumen Pendukung Lampiran
                 </h3>
-                
+
                 <div class="flex items-center justify-between p-4 bg-slate-50 border border-slate-200 rounded-xl group hover:bg-blue-50/50 transition-colors">
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 rounded-lg bg-red-50 border border-red-100 flex items-center justify-center">
@@ -181,4 +183,5 @@
     </main>
 
 </body>
+
 </html>
