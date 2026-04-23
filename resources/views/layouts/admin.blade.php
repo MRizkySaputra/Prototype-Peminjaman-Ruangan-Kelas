@@ -97,10 +97,10 @@
                 </div>
             </div>
             <div class="flex items-center gap-4">
-                <button class="relative text-slate-600 hover:text-[#002045] transition-colors p-2 hover:bg-slate-100 rounded-full">
+                <a href="/admin/notifikasi" class="relative text-slate-600 hover:text-[#002045] transition-colors p-2 hover:bg-slate-100 rounded-full">
                     <span class="material-symbols-outlined">notifications</span>
                     <span class="absolute top-2 right-2 w-2 h-2 bg-red-600 rounded-full border-2 border-white"></span>
-                </button>
+                </a>
                 <div class="h-8 w-px bg-slate-200 mx-1"></div>
                 <div class="flex items-center gap-3">
                     <p class="text-sm font-semibold text-[#002045] font-headline hidden sm:block">Administrator</p>

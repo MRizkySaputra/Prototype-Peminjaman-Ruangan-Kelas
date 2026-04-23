@@ -39,7 +39,7 @@
     <div class="space-y-4">
 
         {{-- Notif 1: Disetujui (belum dibaca) --}}
-        <div class="bg-white border border-slate-200 border-l-4 border-l-blue-600 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+        <div class="group relative flex items-start gap-6 p-6 bg-white rounded-xl shadow-sm border border-slate-200 border-l-4 border-l-blue-600 transition-all hover:translate-x-1 hover:shadow-md">
             <div class="flex gap-4">
                 <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600">
                     <span class="material-symbols-outlined">check_circle</span>
@@ -61,7 +61,7 @@
         </div>
 
         {{-- Notif 2: Menunggu (belum dibaca) --}}
-        <div class="bg-white border border-slate-200 border-l-4 border-l-blue-600 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+        <div class="group relative flex items-start gap-6 p-6 bg-white rounded-xl shadow-sm border border-slate-200 border-l-4 border-l-blue-600 transition-all hover:translate-x-1 hover:shadow-md">
             <div class="flex gap-4">
                 <div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600">
                     <span class="material-symbols-outlined">schedule</span>

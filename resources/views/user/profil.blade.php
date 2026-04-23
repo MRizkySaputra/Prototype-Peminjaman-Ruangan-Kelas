@@ -37,9 +37,10 @@
                                 Mahasiswa Aktif
                             </span>
                         </div>
-                        <button class="flex items-center justify-center gap-2 px-5 py-2 border-2 border-[#002045] text-[#002045] rounded-lg text-sm font-bold hover:bg-[#002045] hover:text-white transition-all">
+                        <a href="/user/profil-edit"
+                            class="flex items-center justify-center gap-2 px-5 py-2 border-2 border-[#002045] text-[#002045] rounded-lg text-sm font-bold hover:bg-[#002045] hover:text-white transition-all">
                             <span class="material-symbols-outlined text-sm">edit</span> Edit Profil
-                        </button>
+                        </a>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">

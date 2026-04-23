@@ -32,8 +32,16 @@ Route::get('/register', function () {
     return view('auth.register');
 });
 
+Route::get('/register-success', function () {
+    return view('auth.register-success');
+});
+
 Route::get('/forget-password', function () {
     return view('auth.forget-password');
+});
+
+Route::get('/forget-password-success', function () {
+    return view('auth.forget-password-success');
 });
 
 Route::get('/admin/dashboard', function () {
@@ -54,6 +62,10 @@ Route::get('/admin/detail-permohonan', function () {
 
 Route::get('/admin/laporan', function () {
     return view('admin.laporan');
+});
+
+Route::get('/admin/notifikasi', function () {
+    return view('admin.notifikasi');
 });
 
 Route::get('/user/dashboard', function () {
@@ -86,4 +98,8 @@ Route::get('/user/notifikasi', function () {
 
 Route::get('/user/profil', function () {
     return view('user.profil');
+});
+
+Route::get('/user/profil-edit', function () {
+    return view('user.profil-edit');
 });

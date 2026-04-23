@@ -68,11 +68,11 @@
 
         {{-- Tombol Register --}}
         <div class="pt-2">
-            <button class="w-full bg-primary-gradient text-white font-headline font-bold py-3.5 rounded-lg shadow-md hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+            <a href="/register-success" class="w-full bg-primary-gradient text-white font-headline font-bold py-3.5 rounded-lg shadow-md hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
                     type="submit">
                 Create Account
                 <span class="material-symbols-outlined text-lg">arrow_forward</span>
-            </button>
+            </a>
         </div>
 
         {{-- Link Login --}}
