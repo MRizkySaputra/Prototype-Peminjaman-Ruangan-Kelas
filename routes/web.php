@@ -15,10 +15,10 @@ Route::post('/login-process', function (Request $request) {
 
     if ($username === 'admin' && $password === 'admin123') {
         return redirect('/admin/dashboard');
-        
+
     } elseif ($username === 'user' && $password === 'user123') {
         return redirect('/user/dashboard');
-        
+
     } else {
         return back()->with('error', 'Username atau kata sandi salah!');
     }
@@ -46,6 +46,10 @@ Route::get('/forget-password-success', function () {
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
+});
+
+Route::get('/admin/jadwal', function () {
+    return view('admin.jadwal');
 });
 
 Route::get('/admin/ruangan', function () {

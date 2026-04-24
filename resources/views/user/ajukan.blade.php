@@ -59,23 +59,6 @@
                     <input class="w-full bg-transparent border-none p-0 focus:ring-0 text-sm font-medium outline-none" placeholder="10" type="number">
                 </div>
             </div>
-
-            {{-- Navigasi Hari --}}
-            <div class="flex items-center gap-2 ml-auto">
-                <button onclick="changeDay(-1)" class="p-2.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition-colors text-slate-600">
-                    <span class="material-symbols-outlined text-xl">chevron_left</span>
-                </button>
-                <div id="currentDayLabel" class="px-4 py-2.5 bg-slate-50 border border-slate-200 text-slate-700 rounded-lg text-sm font-bold min-w-[150px] text-center">
-                    Sabtu, 24 Okt 2026
-                </div>
-                <button onclick="changeDay(1)" class="p-2.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition-colors text-slate-600">
-                    <span class="material-symbols-outlined text-xl">chevron_right</span>
-                </button>
-                <button onclick="goToday()" class="px-4 py-2.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg text-sm font-bold text-slate-600 transition-colors">
-                    Hari Ini
-                </button>
-            </div>
-
         </div>
     </div>
 

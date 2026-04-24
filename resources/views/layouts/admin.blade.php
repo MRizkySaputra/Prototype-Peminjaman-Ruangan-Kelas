@@ -30,55 +30,57 @@
             <nav class="flex-1 space-y-1">
                 <a href="/admin/dashboard"
                    class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200
-                          {{ request()->is('admin/dashboard')
-                              ? 'text-[#002045] font-bold border-l-4 border-[#002045] bg-blue-50/50 pl-3'
-                              : 'text-slate-500 hover:text-[#002045] hover:bg-slate-50' }}">
+                            {{ request()->is('admin/dashboard')
+                                ? 'text-[#002045] font-bold border-l-4 border-[#002045] bg-blue-50/50 pl-3'
+                                : 'text-slate-500 hover:text-[#002045] hover:bg-slate-50' }}">
                     <span class="material-symbols-outlined">analytics</span>
                     <span class="font-headline text-sm font-medium">Dashboard</span>
                 </a>
 
+                <a href="/admin/jadwal"
+                    class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200
+                            {{ request()->is('admin/jadwal')
+                                ? 'text-[#002045] font-bold border-l-4 border-[#002045] bg-blue-50/50 pl-3'
+                                : 'text-slate-500 hover:text-[#002045] hover:bg-slate-50' }}">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                    <span class="font-headline text-sm font-medium">Jadwal Ruangan</span>
+                </a>
+
                 <a href="/admin/ruangan"
                    class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200
-                          {{ request()->is('admin/ruangan')
-                              ? 'text-[#002045] font-bold border-l-4 border-[#002045] bg-blue-50/50 pl-3'
-                              : 'text-slate-500 hover:text-[#002045] hover:bg-slate-50' }}">
+                            {{ request()->is('admin/ruangan')
+                                ? 'text-[#002045] font-bold border-l-4 border-[#002045] bg-blue-50/50 pl-3'
+                                : 'text-slate-500 hover:text-[#002045] hover:bg-slate-50' }}">
                     <span class="material-symbols-outlined">meeting_room</span>
                     <span class="font-headline text-sm font-medium">Manajemen Ruangan</span>
                 </a>
 
                 <a href="/admin/permohonan"
                    class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200
-                          {{ request()->is('admin/permohonan') || request()->is('admin/detail-permohonan')
-                              ? 'text-[#002045] font-bold border-l-4 border-[#002045] bg-blue-50/50 pl-3'
-                              : 'text-slate-500 hover:text-[#002045] hover:bg-slate-50' }}">
+                            {{ request()->is('admin/permohonan') || request()->is('admin/detail-permohonan')
+                                ? 'text-[#002045] font-bold border-l-4 border-[#002045] bg-blue-50/50 pl-3'
+                                : 'text-slate-500 hover:text-[#002045] hover:bg-slate-50' }}">
                     <span class="material-symbols-outlined">inbox</span>
                     <span class="font-headline text-sm font-medium">Permohonan Masuk</span>
                 </a>
 
                 <a href="/admin/laporan"
                    class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200
-                          {{ request()->is('admin/laporan')
-                              ? 'text-[#002045] font-bold border-l-4 border-[#002045] bg-blue-50/50 pl-3'
-                              : 'text-slate-500 hover:text-[#002045] hover:bg-slate-50' }}">
+                            {{ request()->is('admin/laporan')
+                                ? 'text-[#002045] font-bold border-l-4 border-[#002045] bg-blue-50/50 pl-3'
+                                : 'text-slate-500 hover:text-[#002045] hover:bg-slate-50' }}">
                     <span class="material-symbols-outlined">assessment</span>
                     <span class="font-headline text-sm font-medium">Laporan</span>
                 </a>
             </nav>
 
-            {{-- Profil Admin --}}
-            <div class="mt-auto pt-6 border-t border-slate-100">
-                <div class="flex items-center gap-3 px-2">
-                    <img alt="Admin Avatar"
-                         class="w-10 h-10 rounded-full object-cover"
-                         src="https://ui-avatars.com/api/?name=Administrator&background=002045&color=fff" />
-                    <div class="flex-1 min-w-0">
-                        <p class="text-sm font-bold text-[#002045] truncate">Administrator</p>
-                        <p class="text-xs text-slate-500 truncate">admin@masoem.ac.id</p>
-                    </div>
-                    <a class="text-slate-400 hover:text-red-600 transition-colors" href="/login">
-                        <span class="material-symbols-outlined">logout</span>
-                    </a>
-                </div>
+            {{-- Logout --}}
+            <div class="p-6 mt-auto border-t border-slate-100">
+                <a href="/login"
+                   class="flex items-center gap-3 text-slate-500 hover:text-red-600 transition-colors duration-200 font-medium text-sm px-2">
+                    <span class="material-symbols-outlined">logout</span>
+                    Logout
+                </a>
             </div>
 
         </div>

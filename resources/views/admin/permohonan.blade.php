@@ -5,23 +5,17 @@
 @section('content')
 
     {{-- Header --}}
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
-        <div>
-            <h2 class="text-3xl font-extrabold text-[#002045] font-headline tracking-tight">Permohonan Masuk</h2>
-            <p class="text-slate-500 text-sm mt-1">Daftar permohonan peminjaman ruangan yang memerlukan tindakan.</p>
-        </div>
-        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <div class="flex bg-slate-100 p-1 rounded-lg">
-                <button class="px-4 py-2 bg-white text-[#002045] text-sm font-bold rounded-md shadow-sm">Semua</button>
-                <button class="px-4 py-2 text-slate-600 hover:text-[#002045] text-sm font-medium rounded-md transition-all">Menunggu</button>
-                <button class="px-4 py-2 text-slate-600 hover:text-[#002045] text-sm font-medium rounded-md transition-all">Disetujui</button>
-                <button class="px-4 py-2 text-slate-600 hover:text-[#002045] text-sm font-medium rounded-md transition-all">Ditolak</button>
-            </div>
-            <div>
-                <p class="text-sm font-medium text-slate-500">Total Pending</p>
-                <p class="text-3xl font-extrabold text-[#002045] font-headline">12 Permintaan</p>
-            </div>
-        </div>
+    <div class="mb-8">
+        <h2 class="text-3xl font-headline font-extrabold text-[#002045] mb-2">Permohonan Masuk</h2>
+        <p class="text-slate-500 text-sm">Daftar permohonan peminjaman ruangan yang memerlukan tindakan.</p>
+    </div>
+
+    {{-- Filter Tab --}}
+    <div class="flex items-center gap-2 mb-8 p-1 bg-slate-200/50 rounded-lg w-fit">
+        <button class="px-6 py-2 rounded-md text-sm font-bold bg-white text-[#002045] shadow-sm">Semua</button>
+        <button class="px-6 py-2 rounded-md text-sm font-medium text-slate-500 hover:text-[#002045] hover:bg-white/50 transition-colors">Menunggu</button>
+        <button class="px-6 py-2 rounded-md text-sm font-medium text-slate-500 hover:text-[#002045] hover:bg-white/50 transition-colors">Disetujui</button>
+        <button class="px-6 py-2 rounded-md text-sm font-medium text-slate-500 hover:text-[#002045] hover:bg-white/50 transition-colors">Ditolak</button>
     </div>
 
     {{-- Tabel Permohonan --}}

@@ -54,18 +54,9 @@
                     <span class="material-symbols-outlined">history</span>
                     <span class="font-headline text-sm font-medium">Riwayat Peminjaman</span>
                 </a>
-
-                <a href="/user/notifikasi"
-                   class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200
-                          {{ request()->is('user/notifikasi')
-                              ? 'text-[#002045] font-bold border-l-4 border-[#002045] bg-blue-50/50 pl-3'
-                              : 'text-slate-500 hover:text-[#002045] hover:bg-slate-50' }}">
-                    <span class="material-symbols-outlined">notifications</span>
-                    <span class="font-headline text-sm font-medium">Notifikasi</span>
-                </a>
             </nav>
 
-            {{-- Profil User --}}
+            {{-- Logout --}}
             <div class="p-6 mt-auto border-t border-slate-100">
                 <a href="/login"
                    class="flex items-center gap-3 text-slate-500 hover:text-red-600 transition-colors duration-200 font-medium text-sm px-2">
