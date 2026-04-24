@@ -4,13 +4,6 @@
 
 @section('content')
 
-    {{-- Breadcrumb --}}
-    <nav class="flex items-center gap-2 mb-8 text-sm font-medium text-slate-500">
-        <a class="hover:text-[#002045] transition-colors" href="/admin/permohonan">Permohonan Masuk</a>
-        <span class="material-symbols-outlined text-sm">chevron_right</span>
-        <span class="text-[#002045] font-bold">Detail #REQ-20261012-042</span>
-    </nav>
-
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
         {{-- Kiri: Info Peminjaman --}}
@@ -19,7 +12,7 @@
                 <div class="flex justify-between items-start mb-10">
                     <div>
                         <h2 class="text-2xl font-extrabold text-[#002045] font-headline tracking-tight mb-1">Informasi Peminjaman</h2>
-                        <p class="text-sm text-slate-500">ID Permohonan: #REQ-20261012-042</p>
+                        <p class="text-sm text-slate-500">Dikirim pada 20 Okt 2026 • ID #REQ-20261012-042</p>
                     </div>
                     <span class="px-4 py-1.5 rounded-full bg-amber-100 text-amber-700 font-bold text-xs tracking-wider uppercase">
                         Menunggu
@@ -46,7 +39,7 @@
                         <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Waktu</p>
                         <p class="font-bold text-slate-900">09:00 — 12:00 WIB</p>
                     </div>
-                    <div class="md:col-span-2">
+                    <div>
                         <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Nama Kegiatan</p>
                         <p class="font-bold text-[#002045] text-lg">Praktikum Algoritma Lanjut</p>
                     </div>
@@ -54,12 +47,8 @@
                         <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Jumlah Peserta</p>
                         <p class="font-bold text-slate-900">40 Orang</p>
                     </div>
-                    <div>
-                        <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Dikirim Pada</p>
-                        <p class="font-bold text-slate-900">20 Okt 2026, 14:22</p>
-                    </div>
                     <div class="md:col-span-2">
-                        <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Keperluan / Keterangan</p>
+                        <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Keperluan</p>
                         <p class="text-slate-700 leading-relaxed bg-slate-50 p-4 rounded-lg border border-slate-100">
                             Kegiatan praktikum mata kuliah rutin untuk program studi Informatika semester 3.
                             Membutuhkan proyektor dan akses internet stabil.

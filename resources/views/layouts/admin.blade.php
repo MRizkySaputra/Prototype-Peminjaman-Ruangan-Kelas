@@ -46,15 +46,6 @@
                     <span class="font-headline text-sm font-medium">Jadwal Ruangan</span>
                 </a>
 
-                <a href="/admin/ruangan"
-                   class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200
-                            {{ request()->is('admin/ruangan')
-                                ? 'text-[#002045] font-bold border-l-4 border-[#002045] bg-blue-50/50 pl-3'
-                                : 'text-slate-500 hover:text-[#002045] hover:bg-slate-50' }}">
-                    <span class="material-symbols-outlined">meeting_room</span>
-                    <span class="font-headline text-sm font-medium">Manajemen Ruangan</span>
-                </a>
-
                 <a href="/admin/permohonan"
                    class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200
                             {{ request()->is('admin/permohonan') || request()->is('admin/detail-permohonan')
@@ -62,6 +53,15 @@
                                 : 'text-slate-500 hover:text-[#002045] hover:bg-slate-50' }}">
                     <span class="material-symbols-outlined">inbox</span>
                     <span class="font-headline text-sm font-medium">Permohonan Masuk</span>
+                </a>
+
+                <a href="/admin/ruangan"
+                   class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200
+                            {{ request()->is('admin/ruangan')
+                                ? 'text-[#002045] font-bold border-l-4 border-[#002045] bg-blue-50/50 pl-3'
+                                : 'text-slate-500 hover:text-[#002045] hover:bg-slate-50' }}">
+                    <span class="material-symbols-outlined">meeting_room</span>
+                    <span class="font-headline text-sm font-medium">Manajemen Ruangan</span>
                 </a>
 
                 <a href="/admin/laporan"
@@ -92,11 +92,6 @@
         {{-- HEADER / TOPBAR --}}
         <header class="flex justify-between items-center w-full px-8 py-4 sticky top-0 z-30 bg-white/80 backdrop-blur-md shadow-sm border-b border-slate-200">
             <div class="flex items-center gap-4 flex-1">
-                <div class="relative w-full max-w-md">
-                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
-                    <input class="w-full pl-10 pr-4 py-2 bg-slate-100 border-none rounded-lg text-sm focus:ring-2 focus:ring-[#002045] focus:bg-white outline-none transition-all"
-                           placeholder="Cari jadwal atau ruangan..." type="text" />
-                </div>
             </div>
             <div class="flex items-center gap-4">
                 <a href="/admin/notifikasi" class="relative text-slate-600 hover:text-[#002045] transition-colors p-2 hover:bg-slate-100 rounded-full">

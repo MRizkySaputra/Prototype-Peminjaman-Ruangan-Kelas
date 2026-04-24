@@ -5,11 +5,10 @@
 @section('content')
 
     {{-- Selamat Datang --}}
-    <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-8">
-        <div>
-            <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">Jumat, 24 Oktober 2026</p>
+    <div class="flex flex-col md:flex-row justify-between items-end gap-6 bg-white p-8 rounded-2xl shadow-sm border border-slate-200 mb-8">
+        <div class="space-y-2">
             <h2 class="text-3xl font-extrabold tracking-tight text-[#002045] font-headline">Selamat Datang, Admin 👋</h2>
-            <p class="text-slate-500 font-medium mt-1 text-sm">Berikut ringkasan aktivitas sistem hari ini.</p>
+            <p class="text-slate-500 font-medium">Berikut ringkasan aktivitas sistem hari ini.</p>
         </div>
         <div class="flex gap-3">
             <a href="/admin/jadwal"

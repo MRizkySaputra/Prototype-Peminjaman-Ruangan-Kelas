@@ -117,13 +117,13 @@
                 {{-- Kanan --}}
                 <div class="space-y-6">
                     <div>
-                        <label class="block text-xs font-bold text-[#002045] uppercase tracking-wider mb-2">Judul/Nama Kegiatan</label>
+                        <label class="block text-xs font-bold text-[#002045] uppercase tracking-wider mb-2">Nama Kegiatan</label>
                         <input class="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-[#002045]/20 outline-none text-sm"
                                placeholder="Masukkan judul kegiatan" type="text">
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold text-[#002045] uppercase tracking-wider mb-2">Tujuan / Deskripsi Kegiatan</label>
+                        <label class="block text-xs font-bold text-[#002045] uppercase tracking-wider mb-2">Keperluan</label>
                         <textarea class="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-[#002045]/20 outline-none text-sm resize-none"
                                   placeholder="Jelaskan secara detail maksud penggunaan ruangan ini..."
                                   rows="4"></textarea>
@@ -162,7 +162,7 @@
     <div class="mt-6 flex items-start gap-4 p-5 rounded-xl bg-blue-50 border border-blue-100">
         <span class="material-symbols-outlined text-blue-700">info</span>
         <p class="text-xs text-slate-600 leading-relaxed">
-            <strong>Informasi Penting:</strong> Pengajuan ini akan langsung diteruskan ke Admin Akademik untuk ditinjau.
+            <strong>Informasi Penting:</strong> Pengajuan ini akan langsung diteruskan ke Admin SIMPRU untuk ditinjau.
             Pastikan deskripsi kegiatan dan berkas surat permohonan sudah benar.
         </p>
     </div>

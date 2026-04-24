@@ -74,11 +74,11 @@
         {{-- HEADER / TOPBAR --}}
         <header class="flex justify-between items-center w-full px-8 py-4 sticky top-0 z-30 bg-white/80 backdrop-blur-md shadow-sm border-b border-slate-200">
             <div class="flex items-center gap-4 flex-1">
-                <div class="relative w-full max-w-md">
+                {{-- <div class="relative w-full max-w-md">
                     <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
                     <input class="w-full pl-10 pr-4 py-2.5 bg-slate-100 border-none rounded-lg text-sm focus:ring-2 focus:ring-[#002045]/20 focus:bg-white outline-none transition-all"
                            placeholder="Cari ruangan atau jadwal..." type="text" />
-                </div>
+                </div> --}}
             </div>
             <div class="flex items-center gap-4">
                 <a href="/user/notifikasi"

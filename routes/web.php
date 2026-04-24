@@ -9,7 +9,6 @@ Route::get('/', function () {
 });
 
 Route::post('/login-process', function (Request $request) {
-    // Menangkap inputan dari form
     $username = $request->input('username');
     $password = $request->input('password');
 
@@ -102,8 +101,4 @@ Route::get('/user/notifikasi', function () {
 
 Route::get('/user/profil', function () {
     return view('user.profil');
-});
-
-Route::get('/user/profil-edit', function () {
-    return view('user.profil-edit');
 });

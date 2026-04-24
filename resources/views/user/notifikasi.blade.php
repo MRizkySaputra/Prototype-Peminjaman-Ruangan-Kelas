@@ -21,9 +21,9 @@
             <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Total</p>
             <p class="text-2xl font-black text-[#002045] mt-1 font-headline">24</p>
         </div>
-        <div class="bg-white p-5 rounded-xl border border-slate-200 border-l-4 border-l-blue-400 shadow-sm">
+        <div class="bg-white p-5 rounded-xl border border-slate-200 border-l-4 border-l-yellow-400 shadow-sm">
             <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Belum Dibaca</p>
-            <p class="text-2xl font-black text-blue-600 mt-1 font-headline">3</p>
+            <p class="text-2xl font-black text-yellow-600 mt-1 font-headline">3</p>
         </div>
         <div class="bg-white p-5 rounded-xl border border-slate-200 border-l-4 border-l-emerald-500 shadow-sm">
             <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Disetujui</p>
@@ -61,7 +61,7 @@
         </div>
 
         {{-- Notif 2: Menunggu (belum dibaca) --}}
-        <div class="group relative flex items-start gap-6 p-6 bg-white rounded-xl shadow-sm border border-slate-200 border-l-4 border-l-blue-600 transition-all hover:translate-x-1 hover:shadow-md">
+        <div class="group relative flex items-start gap-6 p-6 bg-white rounded-xl shadow-sm border border-slate-200 border-l-4 border-l-yellow-600 transition-all hover:translate-x-1 hover:shadow-md">
             <div class="flex gap-4">
                 <div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600">
                     <span class="material-symbols-outlined">schedule</span>

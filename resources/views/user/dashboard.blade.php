@@ -8,7 +8,7 @@
     <div class="flex flex-col md:flex-row justify-between items-end gap-6 bg-white p-8 rounded-2xl shadow-sm border border-slate-200 mb-8">
         <div class="space-y-2">
             <h2 class="text-3xl font-extrabold tracking-tight text-[#002045] font-headline">Halo, Ahmad Fauzi 👋</h2>
-            <p class="text-slate-500 font-medium">Selamat datang di portal akademik. Ada kegiatan apa hari ini?</p>
+            <p class="text-slate-500 font-medium">Selamat datang di portal SIMPRU. Ada kegiatan apa hari ini?</p>
         </div>
         <a href="/user/ajukan"
            class="bg-primary-gradient text-white px-8 py-3.5 rounded-xl font-bold flex items-center gap-2 shadow-lg shadow-[#002045]/20 hover:opacity-95 active:scale-[0.98] transition-all">
