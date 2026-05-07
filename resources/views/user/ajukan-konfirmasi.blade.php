@@ -82,6 +82,11 @@
                         </div>
 
                         <div>
+                            <label class="text-[10px] text-slate-400 uppercase">Jenis Kegiatan</label>
+                            <p class="font-semibold text-slate-800 mt-1 text-capitalize">Sidang</p>
+                        </div>
+
+                        <div>
                             <label class="text-[10px] text-slate-400 uppercase">Nama Kegiatan</label>
                             <div class="flex items-center gap-2 mt-1">
                                 <p class="font-semibold text-slate-800">Workshop Pemrograman</p>
@@ -95,9 +100,14 @@
                             </div>
                         </div>
 
-                        <div class="md:col-span-2">
+                        <div>
                             <label class="text-[10px] text-slate-400 uppercase">Estimasi Jumlah Peserta</label>
                             <p class="text-slate-700 mt-1 leading-relaxed">40 orang</p>
+                        </div>
+
+                        <div>
+                            <label class="text-[10px] text-slate-400 uppercase">Fasilitas Ruangan</label>
+                            <p class="text-slate-700 mt-1 leading-relaxed">Sound system premium, AC sentral, dan panggung utama.</p>
                         </div>
                     </div>
 

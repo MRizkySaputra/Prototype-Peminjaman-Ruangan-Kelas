@@ -112,10 +112,50 @@
                         </div>
                         <p class="text-[10px] text-slate-400 mt-2 italic">*Maksimal kapasitas ruangan ini adalah 50 orang.</p>
                     </div>
+
+                    <div class="pt-2">
+                        <label class="block text-xs font-bold text-[#002045] uppercase tracking-wider mb-2">Fasilitas Ruangan</label>
+                        <div class="bg-blue-50/50 border border-blue-100 rounded-xl p-4">
+                            <p class="text-xs text-slate-500 mb-3 leading-relaxed">
+                                Ruangan ini dilengkapi dengan fasilitas berikut yang dapat Anda gunakan selama sesi peminjaman:
+                            </p>
+                            <ul class="space-y-2.5">
+                                <li class="flex items-center gap-3 text-sm text-[#002045] font-semibold">
+                                    <div class="w-7 h-7 rounded bg-white border border-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+                                        <span class="material-symbols-outlined text-[16px]">speaker</span>
+                                    </div>
+                                    Sound System Premium
+                                </li>
+                                <li class="flex items-center gap-3 text-sm text-[#002045] font-semibold">
+                                    <div class="w-7 h-7 rounded bg-white border border-emerald-100 flex items-center justify-center text-emerald-600 shrink-0">
+                                        <span class="material-symbols-outlined text-[16px]">ac_unit</span>
+                                    </div>
+                                    AC Sentral
+                                </li>
+                                <li class="flex items-center gap-3 text-sm text-[#002045] font-semibold">
+                                    <div class="w-7 h-7 rounded bg-white border border-purple-100 flex items-center justify-center text-purple-600 shrink-0">
+                                        <span class="material-symbols-outlined text-[16px]">podium</span>
+                                    </div>
+                                    Panggung Utama
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
                 {{-- Kanan --}}
                 <div class="space-y-6">
+                    {{-- Pilihan Jenis Kegiatan --}}
+                    <div>
+                        <label class="block text-xs font-bold text-[#002045] uppercase tracking-wider mb-2">Jenis Kegiatan</label>
+                        <select class="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-[#002045]/20 outline-none text-sm font-medium">
+                            <option value="" disabled selected>Pilih kategori kegiatan</option>
+                            <option value="sidang">Sidang</option>
+                            <option value="ormawa">Ormawa</option>
+                            <option value="fakultas">Fakultas</option>
+                        </select>
+                    </div>
+                    
                     <div>
                         <label class="block text-xs font-bold text-[#002045] uppercase tracking-wider mb-2">Nama Kegiatan</label>
                         <input class="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-[#002045]/20 outline-none text-sm"
