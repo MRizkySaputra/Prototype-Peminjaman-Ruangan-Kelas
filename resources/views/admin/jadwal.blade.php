@@ -46,20 +46,35 @@
         
         {{-- Legenda Selalu Tampil --}}
         <div class="flex flex-wrap items-center gap-4 px-2 shrink-0">
-            <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded-full bg-slate-300"></div><span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Kosong</span></div>
-            <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded-full bg-amber-400"></div><span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Pending</span></div>
-            <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded-full bg-emerald-500"></div><span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Disetujui</span></div>
-            <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded-full bg-red-400"></div><span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Ditolak</span></div>
+            <div class="flex items-center gap-1.5">
+                <div class="w-3 h-3 rounded-full bg-slate-300"></div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Kosong</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+                <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Pending</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+                <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Disetujui</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Ditolak</span>
+            </div>
         </div>
 
         {{-- Filter Inputs (Disembunyikan saat di View Bulanan) --}}
         <div id="filter-inputs" class="flex flex-wrap items-center gap-3 w-full xl:w-auto">
+            {{-- Pilih Gedung --}}
             <select id="filterGedung" onchange="applyFilter()" class="flex-1 min-w-[120px] bg-slate-50 border border-slate-200 rounded-lg py-2 px-3 text-sm font-medium focus:ring-2 focus:ring-[#002045]/20 outline-none">
                 <option value="">Semua Gedung</option>
                 <option value="A">Gedung A</option>
                 <option value="B">Gedung B</option>
                 <option value="C">Gedung C</option>
             </select>
+
+            {{-- Pilih Ruangan --}}
             <select id="filterRuangan" onchange="applyFilter()" class="flex-1 min-w-[140px] bg-slate-50 border border-slate-200 rounded-lg py-2 px-3 text-sm font-medium focus:ring-2 focus:ring-[#002045]/20 outline-none">
                 <option value="">Semua Ruangan</option>
                 <option value="A-101" data-gedung="A">Auditorium Utama</option>
@@ -69,7 +84,11 @@
                 <option value="B-301" data-gedung="B">R. Seminar B</option>
                 <option value="C-101" data-gedung="C">R. Rapat Senat</option>
             </select>
+
+            {{-- Pilih Tanggal --}}
             <input id="filterTanggal" class="flex-1 min-w-[130px] bg-slate-50 border border-slate-200 rounded-lg py-2 px-3 text-sm font-medium focus:ring-2 focus:ring-[#002045]/20 outline-none" type="date" value="2026-10-24">
+            
+            {{-- Pilih Status --}}
             <select class="flex-1 min-w-[120px] bg-slate-50 border border-slate-200 rounded-lg py-2 px-3 text-sm font-medium focus:ring-2 focus:ring-[#002045]/20 outline-none">
                 <option value="">Semua Status</option>
                 <option value="pending">Pending</option>
