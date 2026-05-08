@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
+Route::redirect('/', '/login');
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('auth.login');
 });
 
@@ -22,10 +23,6 @@ Route::post('/login-process', function (Request $request) {
         return back()->with('error', 'Username atau kata sandi salah!');
     }
 });
-
-// Route::get('/login', function () {
-//     return view('auth.login');
-// });
 
 Route::get('/register', function () {
     return view('auth.register');
@@ -69,6 +66,14 @@ Route::get('/admin/laporan', function () {
 
 Route::get('/admin/notifikasi', function () {
     return view('admin.notifikasi');
+});
+
+Route::get('/admin/users', function () {
+    return view('admin.users');
+});
+
+Route::get('/admin/roles', function () {
+    return view('admin.roles');
 });
 
 Route::get('/user/dashboard', function () {

@@ -4,14 +4,14 @@
 
 @section('content')
 
-    {{-- Header & View Switcher --}}
+    {{-- Header --}}
     <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
         <div>
             <h2 class="text-3xl font-headline font-extrabold text-[#002045] mb-2">Jadwal Ruangan</h2>
             <p class="text-slate-500 text-sm">Daftar jadwal peminjaman ruangan yang sedang berlangsung.</p>
         </div>
 
-        {{-- Tabs Switcher (Dibalik: Bulan -> Minggu -> Hari) --}}
+        {{-- Tabs Switcher --}}
         <div class="flex items-center bg-slate-100 p-1 rounded-lg w-full sm:w-auto shadow-inner">
             <button id="btn-bulanan" onclick="switchView('bulanan')" class="flex-1 sm:flex-none px-6 py-2 rounded-md text-sm font-bold transition-all bg-[#002045] text-white shadow-sm">
                 Bulanan
@@ -30,7 +30,7 @@
         <button onclick="navigateDate(-1)" class="p-2 bg-slate-50 hover:bg-slate-100 rounded-lg text-[#002045] transition-colors border border-slate-200 active:scale-95">
             <span class="material-symbols-outlined">chevron_left</span>
         </button>
-        
+
         <div class="text-center">
             <h3 id="current-label" class="text-lg font-extrabold text-[#002045] transition-all">Sabtu, 24 Oktober 2026</h3>
             <p id="sub-label" class="text-[10px] text-slate-400 uppercase font-bold tracking-[0.2em] mt-0.5">Tampilan Harian</p>
@@ -41,9 +41,9 @@
         </button>
     </div>
 
-    {{-- Filter Bar & Legenda (Satu Jajar di bawah Navigasi) --}}
+    {{-- Filter Bar & Legenda --}}
     <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6 flex flex-col xl:flex-row xl:items-center justify-between gap-4 transition-all">
-        
+
         {{-- Legenda Selalu Tampil --}}
         <div class="flex flex-wrap items-center gap-4 px-2 shrink-0">
             <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded-full bg-slate-300"></div><span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Kosong</span></div>
@@ -52,7 +52,7 @@
             <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded-full bg-red-400"></div><span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Ditolak</span></div>
         </div>
 
-        {{-- Filter Inputs (Disembunyikan saat di View Bulanan) --}}
+        {{-- Filter Inputs --}}
         <div id="filter-inputs" class="flex flex-wrap items-center gap-3 w-full xl:w-auto">
             <select id="filterGedung" onchange="applyFilter()" class="flex-1 min-w-[120px] bg-slate-50 border border-slate-200 rounded-lg py-2 px-3 text-sm font-medium focus:ring-2 focus:ring-[#002045]/20 outline-none">
                 <option value="">Semua Gedung</option>
@@ -120,17 +120,15 @@
                     @endforeach
                 </div>
                 <div id="calendar-grid" class="grid grid-cols-7">
-                    {{-- Grid di-generate via JavaScript --}}
                 </div>
             </div>
         </div>
 
-        {{-- VIEW MINGGUAN (Identik Harian, Tanpa Horizontal Scroll) --}}
+        {{-- VIEW MINGGUAN --}}
         <div id="view-mingguan" class="hidden transition-all duration-300">
             <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden mb-6">
                 <div class="overflow-x-hidden">
                     <div id="view-mingguan-inner" class="w-full relative bg-white">
-                        {{-- Akan Di-Generate Oleh JavaScript agar Strukturnya Persis View Harian tanpa overflow X --}}
                     </div>
                 </div>
             </div>
@@ -172,7 +170,7 @@
                                             $slotStatus = 'available'; $slotData = null;
                                             foreach ($bookings[$room['code']] ?? [] as $booking) {
                                                 if ($hour >= $booking[0] && $hour < $booking[1]) {
-                                                    $slotStatus = trim($booking[2]); 
+                                                    $slotStatus = trim($booking[2]);
                                                     $slotData = $booking;
                                                     break;
                                                 }
@@ -235,7 +233,6 @@
             Menampilkan <span class="font-bold text-slate-700" id="roomCount">{{ count($rooms) }}</span> ruangan •
             <span id="footerDate">Sabtu, 24 Oktober 2026</span>
         </p>
-        <p class="text-xs text-slate-400 font-medium italic">Hover slot untuk aksi cepat</p>
     </div>
 
     {{-- Modal Booking Baru --}}
@@ -273,8 +270,7 @@
 
 @push('scripts')
 <script>
-    // Inisialisasi: Bulanan jadi default
-    let currentView = 'bulanan'; 
+    let currentView = 'bulanan';
     let currentDate = new Date('2026-10-24T00:00:00');
 
     const days = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
@@ -287,13 +283,13 @@
 
     // Membangun daftar event dinamis untuk Mingguan & Bulanan
     const allEvents = [];
-    let dayCounter = 0; 
+    let dayCounter = 0;
     for (const [roomCode, bList] of Object.entries(bookingsData)) {
         let room = roomsData.find(r => r.code === roomCode);
         bList.forEach(b => {
-            let dayOffset = dayCounter % 6; 
-            let eventDate = new Date(2026, 9, 19 + dayOffset); 
-            
+            let dayOffset = dayCounter % 6;
+            let eventDate = new Date(2026, 9, 19 + dayOffset);
+
             allEvents.push({
                 roomCode: roomCode,
                 gedung: room ? room.gedung : '',
@@ -326,11 +322,11 @@
             subLabel.innerText = "Tampilan Bulanan";
         } else if (currentView === 'mingguan') {
             const startOfWeek = new Date(currentDate);
-            let dayIndex = startOfWeek.getDay() || 7; 
-            startOfWeek.setDate(startOfWeek.getDate() - dayIndex + 1); 
-            
+            let dayIndex = startOfWeek.getDay() || 7;
+            startOfWeek.setDate(startOfWeek.getDate() - dayIndex + 1);
+
             const endOfWeek = new Date(startOfWeek);
-            endOfWeek.setDate(startOfWeek.getDate() + 6); 
+            endOfWeek.setDate(startOfWeek.getDate() + 6);
 
             label.innerText = `${startOfWeek.getDate()} - ${endOfWeek.getDate()} ${months[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
             subLabel.innerText = "Tampilan Mingguan";
@@ -340,17 +336,17 @@
         }
     }
 
-    // --- Jump Functions (Klik Hari -> Langsung Harian) ---
+    // --- Jump Functions ---
     function jumpToDate(y, m, d) {
         currentDate = new Date(y, m, d, 0, 0, 0);
         switchView('harian');
-        window.scrollTo({ top: 150, behavior: 'smooth' }); 
+        window.scrollTo({ top: 150, behavior: 'smooth' });
     }
 
-    function jumpToWeeklyDay(dayIndex) { 
+    function jumpToWeeklyDay(dayIndex) {
         let d = new Date(currentDate);
-        let currentDay = d.getDay() || 7; 
-        d.setDate(d.getDate() - currentDay + 1 + dayIndex); 
+        let currentDay = d.getDay() || 7;
+        d.setDate(d.getDate() - currentDay + 1 + dayIndex);
         jumpToDate(d.getFullYear(), d.getMonth(), d.getDate());
     }
 
@@ -403,14 +399,14 @@
         updateDateUI();
         if(view === 'bulanan') renderMonthlyCalendar();
         if(view === 'mingguan') renderWeeklyCalendar();
-        applyFilter(); 
+        applyFilter();
     }
 
     // --- Render Mingguan ---
     function renderWeeklyCalendar() {
         const container = document.getElementById('view-mingguan-inner');
         const startOfWeek = new Date(currentDate);
-        let currentDayIndex = startOfWeek.getDay() || 7; 
+        let currentDayIndex = startOfWeek.getDay() || 7;
         startOfWeek.setDate(startOfWeek.getDate() - currentDayIndex + 1);
 
         // Header Mingguan
@@ -419,7 +415,7 @@
                 <div class="w-[60px] md:w-20 shrink-0 px-1 py-4 border-r border-slate-200 bg-slate-50 flex items-center justify-center">
                     <span class="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-widests">Jam</span>
                 </div>`;
-        
+
         for(let i=0; i<7; i++) {
             let d = new Date(startOfWeek); d.setDate(d.getDate() + i);
             html += `
@@ -428,7 +424,7 @@
                     <p class="text-[8px] md:text-[10px] text-slate-400 font-medium mt-0.5">${d.getDate()} ${months[d.getMonth()].substring(0,3)}</p>
                 </div>`;
         }
-        
+
         html += `</div><div class="max-h-[600px] overflow-y-auto relative bg-slate-50 w-full">`;
 
         // Baris Jam
@@ -437,7 +433,7 @@
                         <div class="w-[60px] md:w-20 shrink-0 px-1 border-r border-slate-200 flex items-center justify-center bg-white">
                             <span class="text-[9px] md:text-[11px] font-bold text-slate-400">${padDate(h)}:00</span>
                         </div>`;
-            
+
             for(let d=0; d<7; d++) {
                 let colDate = new Date(startOfWeek); colDate.setDate(colDate.getDate() + d);
                 let colDateStr = toInputVal(colDate);
@@ -479,25 +475,25 @@
             }
             html += `</div>`;
         }
-        
+
         html += `</div></div>`;
         container.innerHTML = html;
-        applyFilter(); 
+        applyFilter();
     }
 
     // --- Render Bulanan ---
     function renderMonthlyCalendar() {
         const grid = document.getElementById('calendar-grid'); grid.innerHTML = '';
         let startOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-        let startDay = startOfMonth.getDay() || 7; 
+        let startDay = startOfMonth.getDay() || 7;
         let daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
-        
+
         let dateCounter = 1;
         for (let i = 1; i <= 35; i++) {
             let isCurrentMonth = (i >= startDay && dateCounter <= daysInMonth);
             let actualDate = isCurrentMonth ? dateCounter++ : '';
             let dateStr = isCurrentMonth ? toInputVal(new Date(currentDate.getFullYear(), currentDate.getMonth(), actualDate)) : '';
-            let isToday = (dateStr === toInputVal(new Date(2026, 9, 24))); 
+            let isToday = (dateStr === toInputVal(new Date(2026, 9, 24)));
 
             let div = document.createElement('div');
             div.className = `min-h-[120px] p-2 border-b border-r border-slate-100 transition-all ${isCurrentMonth ? 'hover:bg-slate-50 cursor-pointer bg-white' : 'bg-slate-50/50'} ${i % 7 === 0 ? 'border-r-0' : ''}`;
@@ -509,7 +505,7 @@
                 let dayEvents = allEvents.filter(e => e.dateStr === dateStr);
                 dayEvents.forEach(e => {
                     let cfg = statusConfig[e.status] || statusConfig['pending'];
-                    html += `<div class="monthly-event-item px-2 py-1 ${cfg.bg} ${cfg.text} text-[9px] font-bold rounded mb-1 truncate cursor-pointer hover:opacity-80 transition-opacity" 
+                    html += `<div class="monthly-event-item px-2 py-1 ${cfg.bg} ${cfg.text} text-[9px] font-bold rounded mb-1 truncate cursor-pointer hover:opacity-80 transition-opacity"
                                   title="${e.title}" data-code="${e.roomCode}" data-gedung="${e.gedung}">
                                 ${padDate(e.startHour)}:00 - ${e.title}
                              </div>`;
@@ -524,7 +520,7 @@
         const gedungFilter = document.getElementById('filterGedung').value;
         const ruanganFilter = document.getElementById('filterRuangan').value;
 
-        // Filter Harian 
+        // Filter Harian
         document.querySelectorAll('#view-harian .room-col').forEach(col => {
             const code = col.dataset.code; const gedung = col.dataset.gedung;
             let show = true;
@@ -542,7 +538,7 @@
             el.style.display = show ? '' : 'none';
         });
 
-        // Update Counter (Hanya dihitung yang terlihat di Harian)
+        // Update Counter
         const visibleCols = document.querySelectorAll('#view-harian #calendarInner .room-col[data-code]:not([style*="display: none"])');
         document.getElementById('roomCount').textContent = Math.round(visibleCols.length / ({{ count($hours) }} + 1));
     }
@@ -570,6 +566,6 @@
     document.getElementById('newBookingModal').addEventListener('click', function(e) { if (e.target === this) closeNewBookingModal(); });
 
     // Inisialisasi awal UI
-    switchView('harian');
+    switchView('bulanan');
 </script>
 @endpush
