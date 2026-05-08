@@ -68,7 +68,7 @@
                 </div>
                 <div class="flex-1">
                     <div class="flex justify-between items-start mb-1.5">
-                        <h4 class="font-bold text-[#002045] text-base">Menunggu Konfirmasi</h4>
+                        <h4 class="font-bold text-[#002045] text-base">Menunggu </h4>
                         <span class="text-[10px] font-bold text-blue-700 bg-blue-100 border border-blue-200 px-2.5 py-0.5 rounded-full uppercase tracking-widest">Baru</span>
                     </div>
                     <p class="text-sm text-slate-600 mb-3">
