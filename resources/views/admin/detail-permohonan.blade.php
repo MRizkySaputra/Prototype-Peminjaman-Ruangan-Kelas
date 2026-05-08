@@ -27,32 +27,55 @@
                             <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-800 border border-blue-100">Mahasiswa</span>
                         </div>
                     </div>
+                    
                     <div>
                         <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Ruangan</p>
                         <p class="font-bold text-slate-900">Lab Komputer 03</p>
                     </div>
+                    
                     <div>
                         <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Tanggal</p>
                         <p class="font-bold text-slate-900">24 Okt 2026</p>
                     </div>
+                    
                     <div>
                         <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Waktu</p>
                         <p class="font-bold text-slate-900">09:00 — 12:00 WIB</p>
                     </div>
+
+                    {{-- Jenis Kegiatan --}}
+                    <div>
+                        <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Jenis Kegiatan</p>
+                        <p class="font-bold text-slate-900">Praktikum / Kuliah</p>
+                    </div>
+
                     <div>
                         <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Nama Kegiatan</p>
                         <p class="font-bold text-[#002045] text-lg">Praktikum Algoritma Lanjut</p>
                     </div>
+
                     <div>
                         <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Jumlah Peserta</p>
                         <p class="font-bold text-slate-900">40 Orang</p>
                     </div>
+
                     <div class="md:col-span-2">
                         <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Keperluan</p>
                         <p class="text-slate-700 leading-relaxed bg-slate-50 p-4 rounded-lg border border-slate-100">
                             Kegiatan praktikum mata kuliah rutin untuk program studi Informatika semester 3.
                             Membutuhkan proyektor dan akses internet stabil.
                         </p>
+                    </div>
+
+                    {{-- Fasilitas Ruangan --}}
+                    <div class="md:col-span-2 border-t border-slate-100 pt-6 mt-[-1rem]">
+                        <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Fasilitas Ruangan</p>
+                        <div class="flex flex-wrap gap-2 mt-2">
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full border border-blue-100">High-speed PC</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full border border-blue-100">LAN Gigabit</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full border border-blue-100">Proyektor</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full border border-blue-100">AC Central</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -91,7 +114,8 @@
                 <p class="text-sm font-medium text-slate-900">Tinjauan admin diperlukan</p>
             </div>
             <div class="flex items-center gap-4 w-full md:w-auto">
-                <button class="flex-1 md:flex-none px-8 py-3 rounded-lg border border-red-500 text-red-600 font-extrabold hover:bg-red-50 transition-colors">
+                {{-- Tombol Tolak membuka Modal --}}
+                <button onclick="openRejectModal()" class="flex-1 md:flex-none px-8 py-3 rounded-lg border border-red-500 text-red-600 font-extrabold hover:bg-red-50 transition-colors">
                     Tolak
                 </button>
                 <button class="flex-1 md:flex-none px-10 py-3 rounded-lg bg-emerald-600 text-white font-extrabold shadow-md hover:bg-emerald-700 transition-all">
@@ -104,4 +128,74 @@
     {{-- Spacer agar konten tidak tertutup action bar --}}
     <div class="h-24"></div>
 
+    {{-- Modal Alasan Penolakan --}}
+    <div id="rejectModal" class="fixed inset-0 z-50 items-center justify-center hidden bg-[#002045]/40 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl p-6 md:p-8 w-full max-w-lg shadow-2xl m-4 transform transition-all">
+            <div class="flex items-center justify-between mb-6 border-b border-slate-100 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-red-50 text-red-600 rounded-full flex items-center justify-center">
+                        <span class="material-symbols-outlined">cancel</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-[#002045] font-headline">Tolak Permohonan</h3>
+                        <p class="text-[11px] text-slate-500">ID: #REQ-20261012-042</p>
+                    </div>
+                </div>
+                <button onclick="closeRejectModal()" class="p-2 rounded-full hover:bg-slate-100 text-slate-400 transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <form action="#" method="POST" class="space-y-6">
+                @csrf
+                <div>
+                    <label class="block text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-2">
+                        Alasan Penolakan <span class="text-red-500">*</span>
+                    </label>
+                    <textarea rows="4" 
+                              class="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:ring-2 focus:ring-red-500/20 focus:border-red-500 outline-none resize-none transition-all placeholder:text-slate-400" 
+                              placeholder="Contoh: Jadwal bentrok dengan kegiatan universitas, atau dokumen kurang lengkap..."></textarea>
+                    <p class="text-[10px] text-slate-400 mt-2 flex items-start gap-1">
+                        <span class="material-symbols-outlined text-[12px]">info</span>
+                        Alasan ini akan dikirimkan ke notifikasi atau email peminjam.
+                    </p>
+                </div>
+
+                <div class="flex gap-3 justify-end pt-2">
+                    <button type="button" onclick="closeRejectModal()" class="px-6 py-2.5 rounded-lg border border-slate-200 text-slate-600 font-bold text-sm hover:bg-slate-50 transition-colors">
+                        Kembali
+                    </button>
+                    <button type="submit" class="px-8 py-2.5 rounded-lg bg-red-600 text-white font-bold text-sm shadow-md hover:bg-red-700 transition-colors">
+                        Kirim Penolakan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 @endsection
+
+@push('scripts')
+<script>
+    // Fungsi untuk membuka modal penolakan
+    function openRejectModal() {
+        const modal = document.getElementById('rejectModal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }
+
+    // Fungsi untuk menutup modal penolakan
+    function closeRejectModal() {
+        const modal = document.getElementById('rejectModal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }
+
+    // Menutup modal jika klik di luar kotak putih
+    document.getElementById('rejectModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeRejectModal();
+        }
+    });
+</script>
+@endpush

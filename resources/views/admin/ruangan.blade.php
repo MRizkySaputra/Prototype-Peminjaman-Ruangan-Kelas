@@ -64,7 +64,7 @@
             </div>
             <div class="mt-4 pt-4 border-t border-slate-200 flex justify-between items-center">
                 <p class="text-[11px] text-slate-500 font-medium">Booked hari ini</p>
-                <a class="text-[11px] font-bold text-blue-900 hover:underline" href="/admin/dashboard">Lihat Jadwal</a>
+                <a class="text-[11px] font-bold text-blue-900 hover:underline" href="/admin/jadwal">Lihat Jadwal</a>
             </div>
         </div>
     </div>
@@ -210,8 +210,8 @@
 
 @endsection
 
-{{-- Modal Tambah Ruangan --}}
 @push('scripts')
+{{-- Modal Tambah Ruangan --}}
 <div id="addRoomModal" class="fixed inset-0 z-50 items-center justify-center hidden bg-[#002045]/40 backdrop-blur-sm">
     <div class="relative w-full max-w-2xl bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] m-4">
         <div class="p-6 border-b border-slate-200 flex justify-between items-center">
@@ -228,6 +228,7 @@
                     <input class="w-full bg-white border border-slate-200 rounded-lg p-3.5 text-sm focus:ring-2 focus:ring-[#002045]/20 focus:border-[#002045] outline-none"
                            placeholder="Contoh: Auditorium Serbaguna" type="text">
                 </div>
+                
                 <div class="grid grid-cols-2 gap-5">
                     <div>
                         <label class="block text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-2">Gedung</label>
@@ -246,10 +247,19 @@
                         </select>
                     </div>
                 </div>
+
                 <div>
                     <label class="block text-[11px] font-bold uppercase tracking-widests text-slate-500 mb-2">Kapasitas (Orang)</label>
                     <input class="w-full bg-white border border-slate-200 rounded-lg p-3.5 text-sm focus:ring-2 focus:ring-[#002045]/20 outline-none"
                            placeholder="Contoh: 40" type="number" min="1">
+                </div>
+
+                {{-- Kolom Baru: Fasilitas Utama --}}
+                <div>
+                    <label class="block text-[11px] font-bold uppercase tracking-widests text-slate-500 mb-2">Fasilitas Utama</label>
+                    <input class="w-full bg-white border border-slate-200 rounded-lg p-3.5 text-sm focus:ring-2 focus:ring-[#002045]/20 outline-none"
+                           placeholder="Contoh: AC Central, Proyektor 4K, Papan Tulis" type="text">
+                    <p class="text-[10px] text-slate-400 mt-1.5">*Pisahkan setiap fasilitas dengan koma (,)</p>
                 </div>
             </form>
         </div>
@@ -267,14 +277,14 @@
 
 {{-- Modal Edit --}}
 <div id="editRoomModal" class="fixed inset-0 z-50 items-center justify-center hidden bg-[#002045]/40 backdrop-blur-sm">
-    <div class="relative w-full max-w-lg bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col m-4">
+    <div class="relative w-full max-w-lg bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] m-4">
         <div class="px-8 py-6 border-b border-slate-200 flex items-center justify-between">
             <h3 class="text-xl font-bold text-[#002045] font-headline">Edit Ruangan</h3>
             <button onclick="closeModal('editRoomModal')" class="p-2 rounded-full hover:bg-slate-100 text-slate-400">
                 <span class="material-symbols-outlined">close</span>
             </button>
         </div>
-        <div class="px-8 py-8 space-y-5 bg-slate-50/50">
+        <div class="px-8 py-8 space-y-5 bg-slate-50/50 overflow-y-auto">
             <div>
                 <label class="text-[11px] uppercase tracking-wider font-bold text-slate-500 block mb-2">Nama Ruangan</label>
                 <input class="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-[#002045]/20 outline-none"
@@ -293,6 +303,14 @@
                     <input class="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-[#002045]/20 outline-none"
                            type="number" value="250">
                 </div>
+            </div>
+
+            {{-- Kolom Baru: Fasilitas Utama di Edit --}}
+            <div>
+                <label class="text-[11px] uppercase tracking-wider font-bold text-slate-500 block mb-2">Fasilitas Utama</label>
+                <input class="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-[#002045]/20 outline-none"
+                       type="text" value="AC Central, Proyektor 4K">
+                <p class="text-[10px] text-slate-400 mt-1.5">*Pisahkan setiap fasilitas dengan koma (,)</p>
             </div>
         </div>
         <div class="px-8 py-6 bg-white border-t border-slate-200 flex justify-end gap-3">
