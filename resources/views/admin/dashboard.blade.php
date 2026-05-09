@@ -27,6 +27,7 @@
     {{-- Kartu Statistik Utama --}}
     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-8">
 
+        {{-- Total Ruangan --}}
         <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
             <div class="flex items-start justify-between mb-5">
                 <div class="p-2.5 bg-blue-50 text-[#002045] rounded-lg group-hover:bg-[#002045] group-hover:text-white transition-colors">
@@ -34,15 +35,16 @@
                 </div>
                 <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Total Ruangan</span>
             </div>
-            <p class="text-4xl font-black text-[#002045] font-headline">48</p>
+            <p class="text-4xl font-black text-[#002045] font-headline">{{ $stats['total_ruangan'] ?? 0 }}</p>
             <div class="flex items-center gap-2 mt-3 pt-3 border-t border-slate-100">
                 <span class="flex items-center gap-1 text-xs font-bold text-emerald-600">
-                    <span class="material-symbols-outlined text-sm">arrow_upward</span> 32
+                    <span class="material-symbols-outlined text-sm">arrow_upward</span> {{ $stats['ruangan_tersedia'] ?? 0 }}
                 </span>
                 <span class="text-xs text-slate-400 font-medium">tersedia hari ini</span>
             </div>
         </div>
 
+        {{-- Permohonan --}}
         <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
             <div class="flex items-start justify-between mb-5">
                 <div class="p-2.5 bg-amber-50 text-amber-600 rounded-lg group-hover:bg-amber-500 group-hover:text-white transition-colors">
@@ -50,15 +52,16 @@
                 </div>
                 <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Permohonan</span>
             </div>
-            <p class="text-4xl font-black text-amber-600 font-headline">12</p>
+            <p class="text-4xl font-black text-amber-600 font-headline">{{ $stats['total_permohonan'] ?? 0 }}</p>
             <div class="flex items-center gap-2 mt-3 pt-3 border-t border-slate-100">
                 <span class="flex items-center gap-1 text-xs font-bold text-red-500">
-                    <span class="material-symbols-outlined text-sm">priority_high</span> 5
+                    <span class="material-symbols-outlined text-sm">priority_high</span> {{ $stats['permohonan_pending'] ?? 0 }}
                 </span>
                 <span class="text-xs text-slate-400 font-medium">menunggu tinjauan</span>
             </div>
         </div>
 
+        {{-- Disetujui --}}
         <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
             <div class="flex items-start justify-between mb-5">
                 <div class="p-2.5 bg-emerald-50 text-emerald-600 rounded-lg group-hover:bg-emerald-500 group-hover:text-white transition-colors">
@@ -66,15 +69,16 @@
                 </div>
                 <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widests">Disetujui</span>
             </div>
-            <p class="text-4xl font-black text-emerald-600 font-headline">86</p>
+            <p class="text-4xl font-black text-emerald-600 font-headline">{{ $stats['total_disetujui'] ?? 0 }}</p>
             <div class="flex items-center gap-2 mt-3 pt-3 border-t border-slate-100">
                 <span class="flex items-center gap-1 text-xs font-bold text-emerald-600">
-                    <span class="material-symbols-outlined text-sm">trending_up</span> +14%
+                    <span class="material-symbols-outlined text-sm">trending_up</span> {{ $stats['persentase_disetujui'] ?? '+0%' }}
                 </span>
                 <span class="text-xs text-slate-400 font-medium">bulan ini</span>
             </div>
         </div>
 
+        {{-- Ditolak --}}
         <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
             <div class="flex items-start justify-between mb-5">
                 <div class="p-2.5 bg-red-50 text-red-500 rounded-lg group-hover:bg-red-500 group-hover:text-white transition-colors">
@@ -82,10 +86,11 @@
                 </div>
                 <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widests">Ditolak</span>
             </div>
-            <p class="text-4xl font-black text-red-500 font-headline">07</p>
+            {{-- Menggunakan str_pad agar angka di bawah 10 tetap memiliki angka 0 di depannya (contoh: 07) --}}
+            <p class="text-4xl font-black text-red-500 font-headline">{{ str_pad($stats['total_ditolak'] ?? 0, 2, '0', STR_PAD_LEFT) }}</p>
             <div class="flex items-center gap-2 mt-3 pt-3 border-t border-slate-100">
                 <span class="flex items-center gap-1 text-xs font-bold text-slate-500">
-                    <span class="material-symbols-outlined text-sm">trending_down</span> -3%
+                    <span class="material-symbols-outlined text-sm">trending_down</span> {{ $stats['persentase_ditolak'] ?? '-0%' }}
                 </span>
                 <span class="text-xs text-slate-400 font-medium">bulan ini</span>
             </div>

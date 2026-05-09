@@ -120,24 +120,19 @@
                                 Ruangan ini dilengkapi dengan fasilitas berikut yang dapat Anda gunakan selama sesi peminjaman:
                             </p>
                             <ul class="space-y-2.5">
-                                <li class="flex items-center gap-3 text-sm text-[#002045] font-semibold">
-                                    <div class="w-7 h-7 rounded bg-white border border-blue-100 flex items-center justify-center text-blue-600 shrink-0">
-                                        <span class="material-symbols-outlined text-[16px]">speaker</span>
-                                    </div>
-                                    Sound System Premium
-                                </li>
-                                <li class="flex items-center gap-3 text-sm text-[#002045] font-semibold">
-                                    <div class="w-7 h-7 rounded bg-white border border-emerald-100 flex items-center justify-center text-emerald-600 shrink-0">
-                                        <span class="material-symbols-outlined text-[16px]">ac_unit</span>
-                                    </div>
-                                    AC Sentral
-                                </li>
-                                <li class="flex items-center gap-3 text-sm text-[#002045] font-semibold">
-                                    <div class="w-7 h-7 rounded bg-white border border-purple-100 flex items-center justify-center text-purple-600 shrink-0">
-                                        <span class="material-symbols-outlined text-[16px]">podium</span>
-                                    </div>
-                                    Panggung Utama
-                                </li>
+                                {{-- Looping data fasilitas dari Controller --}}
+                                @forelse ($fasilitas ?? [] as $item)
+                                    <li class="flex items-center gap-3 text-sm text-[#002045] font-semibold">
+                                        <div class="w-7 h-7 rounded bg-white border {{ $item['border_color'] }} flex items-center justify-center {{ $item['text_color'] }} shrink-0">
+                                            <span class="material-symbols-outlined text-[16px]">{{ $item['icon'] }}</span>
+                                        </div>
+                                        {{ $item['nama'] }}
+                                    </li>
+                                @empty
+                                    <li class="text-sm text-slate-500 italic">
+                                        Tidak ada fasilitas khusus yang terdaftar untuk ruangan ini.
+                                    </li>
+                                @endforelse
                             </ul>
                         </div>
                     </div>
