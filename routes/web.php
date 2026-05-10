@@ -75,6 +75,11 @@ Route::get('/admin/permohonan', function () {
 Route::get('/admin/detail-permohonan', function () {
     return view('admin.detail-permohonan');
 });
+Route::post('/admin/detail-permohonan', function () {
+    // Ini adalah simulasi ketika admin menekan tombol "Kirim Penolakan" atau "Setujui"
+    // Sistem akan mengembalikan admin ke halaman daftar permohonan
+    return redirect('/admin/permohonan');
+});
 
 // Laporan Admin dengan data grafik
 Route::get('/admin/laporan', function () {

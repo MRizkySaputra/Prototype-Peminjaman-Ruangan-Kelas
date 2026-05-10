@@ -105,8 +105,16 @@
 
     {{-- Tabel Riwayat --}}
     <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-        <div class="p-6 border-b border-slate-200 flex justify-between items-center">
+        <div class="p-6 border-b border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <h4 class="font-headline text-lg font-bold text-[#002045]">Daftar Riwayat Lengkap</h4>
+            
+            {{-- Filter Tab --}}
+            <div class="flex items-center gap-1 p-1 bg-slate-100 rounded-lg w-fit overflow-x-auto">
+                <button class="px-4 py-1.5 rounded-md text-xs font-bold bg-white text-[#002045] shadow-sm whitespace-nowrap">Semua</button>
+                <button class="px-4 py-1.5 rounded-md text-xs font-medium text-slate-500 hover:text-[#002045] hover:bg-white/50 transition-colors whitespace-nowrap">Menunggu</button>
+                <button class="px-4 py-1.5 rounded-md text-xs font-medium text-slate-500 hover:text-[#002045] hover:bg-white/50 transition-colors whitespace-nowrap">Disetujui</button>
+                <button class="px-4 py-1.5 rounded-md text-xs font-medium text-slate-500 hover:text-[#002045] hover:bg-white/50 transition-colors whitespace-nowrap">Ditolak</button>
+            </div>
         </div>
         <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse">

@@ -40,8 +40,8 @@
                         <p class="font-bold text-slate-900">09:00 — 12:00 WIB</p>
                     </div>
                     <div>
-                        <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Nama Kegiatan</p>
-                        <p class="font-bold text-[#002045] text-lg">Praktikum Algoritma Lanjut</p>
+                        <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Jenis Kegiatan</p>
+                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs font-bold rounded-lg border border-indigo-100">Fakultas</span>
                     </div>
                     <div>
                         <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Jumlah Peserta</p>
@@ -91,12 +91,65 @@
                 <p class="text-sm font-medium text-slate-900">Tinjauan admin diperlukan</p>
             </div>
             <div class="flex items-center gap-4 w-full md:w-auto">
-                <button class="flex-1 md:flex-none px-8 py-3 rounded-lg border border-red-500 text-red-600 font-extrabold hover:bg-red-50 transition-colors">
-                    Tolak
-                </button>
+                <button type="button" onclick="openRejectModal()" class="flex-1 md:flex-none px-8 py-3 rounded-lg border border-red-500 text-red-600 font-extrabold hover:bg-red-50 transition-colors">
+                  Tolak
+                 </button>
                 <button class="flex-1 md:flex-none px-10 py-3 rounded-lg bg-emerald-600 text-white font-extrabold shadow-md hover:bg-emerald-700 transition-all">
                     Setujui Permohonan
                 </button>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal Tolak Permohonan --}}
+    <div id="rejectModal" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        {{-- Backdrop/Background Gelap --}}
+        <div class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm transition-opacity" aria-hidden="true" onclick="closeRejectModal()"></div>
+
+        {{-- Panel Modal --}}
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg border border-slate-200">
+                    
+                    {{-- Form Penolakan --}}
+                    <form action="#" method="POST">
+                        @csrf
+                        <div class="bg-white px-6 pb-6 pt-8 sm:p-8">
+                            <div class="sm:flex sm:items-start">
+                                <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-12 sm:w-12">
+                                    <span class="material-symbols-outlined text-red-600 text-2xl">warning</span>
+                                </div>
+                                <div class="mt-4 text-center sm:ml-4 sm:mt-0 sm:text-left w-full">
+                                    <h3 class="text-xl font-bold leading-6 text-[#002045] font-headline" id="modal-title">Tolak Permohonan</h3>
+                                    <div class="mt-2">
+                                        <p class="text-sm text-slate-500 mb-4">Berikan alasan mengapa permohonan peminjaman ruangan ini ditolak. Alasan ini akan dikirimkan kepada peminjam via notifikasi.</p>
+                                        
+                                        <div>
+                                            <label for="alasan_penolakan" class="block text-xs font-bold text-[#002045] uppercase tracking-wider mb-2">
+                                                Alasan Penolakan <span class="text-red-500">*</span>
+                                            </label>
+                                            <textarea id="alasan_penolakan" 
+                                                      name="alasan_penolakan" 
+                                                      rows="4" 
+                                                      required
+                                                      class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-red-500/20 focus:border-red-500 outline-none text-sm resize-none" 
+                                                      placeholder="Contoh: Ruangan akan digunakan untuk pemeliharaan rutin pada jam tersebut..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 px-6 py-4 flex flex-col-reverse sm:flex-row sm:justify-end gap-3 border-t border-slate-100">
+                            <button type="button" onclick="closeRejectModal()" class="w-full sm:w-auto px-6 py-2.5 rounded-lg border border-slate-300 bg-white text-slate-700 font-bold hover:bg-slate-50 transition-colors text-sm">
+                                Batal
+                            </button>
+                            <button type="submit" class="w-full sm:w-auto px-8 py-2.5 rounded-lg bg-red-600 text-white font-bold shadow-md hover:bg-red-700 transition-colors text-sm flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined text-sm">send</span> Kirim Penolakan
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
             </div>
         </div>
     </div>
@@ -105,3 +158,16 @@
     <div class="h-24"></div>
 
 @endsection
+@push('scripts')
+<script>
+    // Fungsi untuk membuka modal tolak
+    function openRejectModal() {
+        document.getElementById('rejectModal').classList.remove('hidden');
+    }
+
+    // Fungsi untuk menutup modal tolak
+    function closeRejectModal() {
+        document.getElementById('rejectModal').classList.add('hidden');
+    }
+</script>
+@endpush
