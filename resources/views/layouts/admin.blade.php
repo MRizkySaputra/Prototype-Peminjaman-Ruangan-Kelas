@@ -81,6 +81,15 @@
                     <span class="material-symbols-outlined">assessment</span>
                     <span class="font-headline text-sm font-medium">Laporan</span>
                 </a>
+
+                <a href="/admin/settings"
+                   class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200
+                            {{ request()->is('admin/settings')
+                                ? 'text-[#002045] font-bold border-l-4 border-[#002045] bg-blue-50/50 pl-3'
+                                : 'text-slate-500 hover:text-[#002045] hover:bg-slate-50' }}">
+                    <span class="material-symbols-outlined">settings</span>
+                    <span class="font-headline text-sm font-medium">Pengaturan</span>
+                </a>
             </nav>
 
             {{-- Logout --}}
