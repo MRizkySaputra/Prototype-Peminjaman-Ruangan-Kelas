@@ -76,6 +76,10 @@ Route::get('/admin/roles', function () {
     return view('admin.roles');
 });
 
+Route::get('/admin/settings', function () {
+    return view('admin.settings');
+});
+
 Route::get('/user/dashboard', function () {
     return view('user.dashboard');
 });
