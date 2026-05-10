@@ -35,7 +35,6 @@
         
         <div class="text-center">
             <h3 id="current-label" class="text-lg font-extrabold text-[#002045] transition-all">Sabtu, 24 Oktober 2026</h3>
-            <p id="sub-label" class="text-[10px] text-slate-400 uppercase font-bold tracking-[0.2em] mt-0.5">Tampilan Harian</p>
         </div>
 
         <button onclick="navigateDate(1)" class="p-2 bg-slate-50 hover:bg-slate-100 rounded-lg text-[#002045] transition-colors border border-slate-200 active:scale-95">
@@ -43,26 +42,26 @@
         </button>
     </div>
 
-    {{-- Filter Bar & Legenda (Satu Jajar di bawah Navigasi) --}}
+    {{-- Filter Bar & Legenda --}}
     <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6 flex flex-col xl:flex-row xl:items-center justify-between gap-4 transition-all">
         
         {{-- Legenda Selalu Tampil --}}
-        <div class="flex items-center gap-6 mb-4 px-1">
-            <div class="flex items-center gap-2">
+        <div class="flex flex-wrap items-center gap-4 px-2 shrink-0">
+            <div class="flex items-center gap-1.5">
                 <div class="w-3 h-3 rounded-full bg-slate-300"></div>
-                <span class="text-xs font-semibold text-slate-500">Kosong — bisa dipilih</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Kosong</span>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-1.5">
                 <div class="w-3 h-3 rounded-full bg-amber-400"></div>
-                <span class="text-xs font-semibold text-slate-500">Pending</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Pending</span>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-1.5">
                 <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
-                <span class="text-xs font-semibold text-slate-500">Terisi</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Disetujui</span>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-1.5">
                 <div class="w-3 h-3 rounded-full bg-blue-500"></div>
-                <span class="text-xs font-semibold text-slate-500">Pilihan Anda</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Dipilih</span>
             </div>
         </div>
 
@@ -70,7 +69,6 @@
         <div id="filter-inputs" class="flex flex-wrap items-center gap-3 w-full xl:w-auto">
             {{-- Pilih Gedung --}}
             <div class="flex-1 min-w-[160px]">
-                <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Gedung</label>
                 <select id="filterGedung" onchange="applyFilter()"
                         class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm font-medium focus:ring-2 focus:ring-[#002045]/20 outline-none">
                     <option value="">Semua Gedung</option>
@@ -82,7 +80,6 @@
 
             {{-- Pilih Ruangan --}}
             <div class="flex-1 min-w-[160px]">
-                <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Ruangan</label>
                 <select id="filterRuangan" onchange="applyFilter()"
                         class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm font-medium focus:ring-2 focus:ring-[#002045]/20 outline-none">
                     <option value="">Semua Ruangan</option>
@@ -96,19 +93,17 @@
             </div>
 
             {{-- Pilih Tanggal --}}
-             <div class="flex-1 min-w-[160px]">
-                <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Tanggal</label>
+            <div class="flex-1 min-w-[160px]">
                 <input id="filterTanggal"
                        class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm font-medium focus:ring-2 focus:ring-[#002045]/20 outline-none"
                        type="date" value="2026-10-24">
             </div>
-            
-            {{-- Pilih Kapasitas --}}
+
+            {{-- Min Kapasitas --}}
             <div class="w-30">
-                <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widests mb-2">Min. Kapasitas</label>
-                <div class="flex items-center bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4">
+                <div class="flex items-center bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 focus-within:ring-2 focus-within:ring-[#002045]/20 transition-all">
                     <span class="material-symbols-outlined text-sm text-slate-400 mr-2">group</span>
-                    <input class="w-full bg-transparent border-none p-0 focus:ring-0 text-sm font-medium outline-none" placeholder="10" type="number">
+                    <input class="w-full bg-transparent border-none p-0 focus:ring-0 text-sm font-medium outline-none" placeholder="Min. Kapasitas" type="number">
                 </div>
             </div>
         </div>
@@ -264,7 +259,7 @@
         <p class="text-xs text-slate-400 font-medium italic">Klik slot kosong (+) untuk memilih jadwal peminjaman</p>
     </div>
 
-    {{-- Pop up Detail & Aksi Pengajuan (Sisi User) --}}
+    {{-- Pop up Detail & Aksi Pengajuan --}}
     <div id="slotPopup" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-[#002045]/40 backdrop-blur-sm" onclick="closePopup(event)">
         <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 overflow-hidden" onclick="event.stopPropagation()">
 
@@ -381,11 +376,9 @@
         document.getElementById('footerDate').textContent = formatDateLabel(currentDate);
 
         const label = document.getElementById('current-label');
-        const subLabel = document.getElementById('sub-label');
 
         if (currentView === 'bulanan') {
             label.innerText = `${months[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
-            subLabel.innerText = "Tampilan Bulanan";
         } else if (currentView === 'mingguan') {
             const startOfWeek = new Date(currentDate);
             let dayIndex = startOfWeek.getDay() || 7; 
@@ -395,10 +388,8 @@
             endOfWeek.setDate(startOfWeek.getDate() + 6); 
 
             label.innerText = `${startOfWeek.getDate()} - ${endOfWeek.getDate()} ${months[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
-            subLabel.innerText = "Tampilan Mingguan";
         } else {
             label.innerText = formatDateLabel(currentDate);
-            subLabel.innerText = "Tampilan Harian";
         }
     }
 
@@ -631,7 +622,7 @@
         fillPopupBase(roomCode, hour, roomName, building, capacity, img, desc);
 
         document.getElementById('popupStatusBadge').textContent = 'Tersedia';
-        document.getElementById('popupStatusBadge').className = 'absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500 text-white';
+        document.getElementById('popupStatusBadge').className = 'absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-blue-500 text-white';
 
         document.getElementById('popupActionAvailable').classList.remove('hidden');
         document.getElementById('popupActionBooked').classList.add('hidden');

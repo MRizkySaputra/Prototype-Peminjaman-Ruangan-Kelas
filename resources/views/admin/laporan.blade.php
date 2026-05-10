@@ -11,6 +11,7 @@
             <p class="text-slate-500 mt-2 text-sm">Pantau penggunaan ruangan dan status permohonan secara real-time.</p>
         </div>
         <div class="flex flex-wrap items-center gap-3">
+            {{-- Filter Tanggal Global --}}
             <div class="bg-white p-1 rounded-xl shadow-sm flex items-center border border-slate-200">
                 <div class="px-4 py-1">
                     <span class="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Mulai</span>
@@ -22,11 +23,12 @@
                     <input class="border-none p-0 text-sm font-bold text-[#002045] focus:ring-0 bg-transparent outline-none" type="date" value="2026-10-31">
                 </div>
             </div>
+            {{-- Tombol Export --}}
             <div class="flex gap-2">
-                <button class="bg-white border border-slate-200 text-slate-600 px-4 py-2.5 rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-slate-50 shadow-sm">
+                <button class="bg-white border border-slate-200 text-slate-600 px-4 py-2.5 rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-slate-50 shadow-sm transition-colors">
                     <span class="material-symbols-outlined text-sm text-red-500">picture_as_pdf</span> PDF
                 </button>
-                <button class="bg-white border border-slate-200 text-slate-600 px-4 py-2.5 rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-slate-50 shadow-sm">
+                <button class="bg-white border border-slate-200 text-slate-600 px-4 py-2.5 rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-slate-50 shadow-sm transition-colors">
                     <span class="material-symbols-outlined text-sm text-green-600">table_view</span> Excel
                 </button>
             </div>
@@ -103,19 +105,39 @@
         </div>
     </div>
 
-    {{-- Tabel Riwayat --}}
+    {{-- Tabel Riwayat Lengkap --}}
     <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-        <div class="p-6 border-b border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <h4 class="font-headline text-lg font-bold text-[#002045]">Daftar Riwayat Lengkap</h4>
+        
+        {{-- Header Tabel & Filter --}}
+        <div class="p-6 border-b border-slate-200 flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-white">
+            <h4 class="font-headline text-lg font-bold text-[#002045] shrink-0">Daftar Riwayat Lengkap</h4>
             
-            {{-- Filter Tab --}}
-            <div class="flex items-center gap-1 p-1 bg-slate-100 rounded-lg w-fit overflow-x-auto">
-                <button class="px-4 py-1.5 rounded-md text-xs font-bold bg-white text-[#002045] shadow-sm whitespace-nowrap">Semua</button>
-                <button class="px-4 py-1.5 rounded-md text-xs font-medium text-slate-500 hover:text-[#002045] hover:bg-white/50 transition-colors whitespace-nowrap">Menunggu</button>
-                <button class="px-4 py-1.5 rounded-md text-xs font-medium text-slate-500 hover:text-[#002045] hover:bg-white/50 transition-colors whitespace-nowrap">Disetujui</button>
-                <button class="px-4 py-1.5 rounded-md text-xs font-medium text-slate-500 hover:text-[#002045] hover:bg-white/50 transition-colors whitespace-nowrap">Ditolak</button>
+            <div class="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+                {{-- Search Bar --}}
+                <div class="relative flex-1 min-w-[200px]">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+                    <input type="text" placeholder="Cari nama peminjam..." 
+                           class="w-full bg-slate-50 border border-slate-200 rounded-lg pl-9 pr-4 py-2 text-sm focus:ring-2 focus:ring-[#002045]/20 outline-none transition-all">
+                </div>
+
+                {{-- Filter Gedung --}}
+                <select class="flex-1 min-w-[140px] bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 focus:ring-2 focus:ring-[#002045]/20 outline-none transition-all">
+                    <option value="">Semua Gedung</option>
+                    <option value="A">Gedung A (Rektorat)</option>
+                    <option value="B">Gedung B (Teknik)</option>
+                    <option value="C">Gedung C (Ekonomi)</option>
+                </select>
+
+                {{-- Filter Status --}}
+                <select class="flex-1 min-w-[140px] bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 focus:ring-2 focus:ring-[#002045]/20 outline-none transition-all">
+                    <option value="">Semua Status</option>
+                    <option value="approved">Disetujui</option>
+                    <option value="pending">Pending</option>
+                    <option value="rejected">Ditolak</option>
+                </select>
             </div>
         </div>
+
         <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse">
                 <thead>

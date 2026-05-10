@@ -126,6 +126,10 @@ Route::post('/admin/roles/edit', function () {
 // ==========================================
 // USER ROUTES
 // ==========================================
+Route::get('/admin/settings', function () {
+    return view('admin.settings');
+});
+
 Route::get('/user/dashboard', function () {
     return view('user.dashboard');
 });

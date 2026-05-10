@@ -58,6 +58,21 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12">
 
+                {{-- Alasan Penolakan (Hanya muncul jika status ditolak via JS) --}}
+                <div id="rejectionBox" class="md:col-span-2 hidden">
+                    <div class="bg-red-50 border border-red-100 rounded-xl p-5 flex gap-4 items-start shadow-sm">
+                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shrink-0 shadow-sm text-red-500">
+                            <span class="material-symbols-outlined text-xl">block</span>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest text-red-500 font-bold mb-1">Alasan Penolakan Admin</p>
+                            <p class="text-sm font-medium text-red-800 leading-relaxed">
+                                Mohon maaf, jadwal yang Anda pilih bentrok dengan jadwal pemeliharaan (maintenance) ruangan. Silakan ajukan ulang untuk tanggal yang berbeda.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 <div>
                     <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Ruangan</p>
                     <p class="font-bold text-slate-900">Ruang Teater - Gedung A</p>
@@ -71,6 +86,11 @@
                 </div>
 
                 <div>
+                    <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Jenis Kegiatan</p>
+                    <p class="font-bold text-slate-900">Sidang</p>
+                </div>
+
+                <div>
                     <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Nama Kegiatan</p>
                     <p class="font-bold text-[#002045] text-lg">Workshop Pemrograman</p>
                 </div>
@@ -80,6 +100,11 @@
                     <p class="font-bold text-slate-900">40 Orang</p>
                 </div>
 
+                <div>
+                    <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Penanggung Jawab</p>
+                    <p class="font-bold text-slate-900">Ahmad Fauzi (2010411032)</p>
+                </div>
+
                 <div class="md:col-span-2">
                     <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Keperluan</p>
                     <p class="text-slate-700 leading-relaxed bg-slate-50 p-4 rounded-lg border border-slate-100">
@@ -87,9 +112,14 @@
                     </p>
                 </div>
 
-                <div>
-                    <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Penanggung Jawab</p>
-                    <p class="font-bold text-slate-900">Ahmad Fauzi (2010411032)</p>
+                <div class="md:col-span-2 border-t border-slate-100 pt-6 mt-[-1rem]">
+                    <p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Fasilitas Ruangan Tersedia</p>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full border border-blue-100">AC Sentral</span>
+                        <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full border border-blue-100">Proyektor 4K</span>
+                        <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full border border-blue-100">Sound System</span>
+                        <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full border border-blue-100">Panggung Utama</span>
+                    </div>
                 </div>
 
             </div>
