@@ -44,29 +44,26 @@
                 <h4 class="font-headline text-lg font-bold text-[#002045]">Volume Peminjaman per Tipe Ruangan</h4>
             </div>
             <div class="h-64 flex items-end justify-between gap-4">
-                @php
-                    $bars = [
-                        ['label' => 'Lab Komputer', 'height' => '40%', 'value' => 42, 'active' => false],
-                        ['label' => 'Auditorium', 'height' => '75%', 'value' => 86, 'active' => false],
-                        ['label' => 'R. Seminar', 'height' => '100%', 'value' => 124, 'active' => true],
-                        ['label' => 'R. Kelas', 'height' => '55%', 'value' => 64, 'active' => false],
-                        ['label' => 'R. Rapat', 'height' => '30%', 'value' => 28, 'active' => false],
-                        ['label' => 'Lab Bahasa', 'height' => '65%', 'value' => 78, 'active' => false],
-                    ];
-                @endphp
-                @foreach ($bars as $bar)
+                
+                {{-- Data sekarang diambil dari variabel $bars yang dikirim Controller --}}
+                @forelse ($bars ?? [] as $bar)
                     <div class="flex-1 flex flex-col items-center gap-3">
                         <div class="w-full rounded-t-lg relative group transition-all hover:opacity-90"
-                             style="height: {{ $bar['height'] }}; background-color: {{ $bar['active'] ? '#002045' : 'rgba(0,32,69,0.1)' }}">
+                             style="height: {{ $bar['height'] }}%; background-color: {{ isset($bar['active']) && $bar['active'] ? '#002045' : 'rgba(0,32,69,0.1)' }}">
                             <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#002045] text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
                                 {{ $bar['value'] }}
                             </div>
                         </div>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase text-center {{ $bar['active'] ? 'text-[#002045]' : '' }}">
+                        <span class="text-[10px] font-bold text-slate-500 uppercase text-center {{ isset($bar['active']) && $bar['active'] ? 'text-[#002045]' : '' }}">
                             {{ $bar['label'] }}
                         </span>
                     </div>
-                @endforeach
+                @empty
+                    <div class="w-full h-full flex items-center justify-center">
+                        <p class="text-sm font-medium text-slate-400">Belum ada data peminjaman ruangan.</p>
+                    </div>
+                @endforelse
+
             </div>
         </div>
 
@@ -92,7 +89,7 @@
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-2">
                             <span class="w-3 h-3 rounded-full bg-amber-300"></span>
-                            <span class="text-sm font-medium text-slate-700">Pending</span>
+                            <span class="text-sm font-medium text-slate-700">Menunggu</span>
                         </div>
                         <span class="text-sm font-bold text-amber-600">20%</span>
                     </div>
@@ -135,7 +132,7 @@
                 <select class="flex-1 min-w-[140px] bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 focus:ring-2 focus:ring-[#002045]/20 outline-none transition-all">
                     <option value="">Semua Status</option>
                     <option value="approved">Disetujui</option>
-                    <option value="pending">Pending</option>
+                    <option value="menunggu">Menunggu</option>
                     <option value="rejected">Ditolak</option>
                 </select>
             </div>

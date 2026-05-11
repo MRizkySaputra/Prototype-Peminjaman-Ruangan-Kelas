@@ -87,19 +87,17 @@
 
                 {{-- Peran / Jabatan --}}
                 <div>
-                    <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widests mb-2">Peran / Jabatan</label>
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Peran / Jabatan</label>
                     <div class="relative">
                         <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">work</span>
-                        <select id="inputRole"
-                                name="role"
-                                class="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-[#002045]/20 focus:border-[#002045] focus:bg-white outline-none transition-all appearance-none">
-                            <option value="mahasiswa" selected>Mahasiswa</option>
-                            <option value="dosen">Dosen</option>
-                            <option value="staf">Staf / Pegawai</option>
-                            <option value="organisasi">Organisasi Mahasiswa</option>
-                        </select>
-                        <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none">expand_more</span>
+                        <input name="role"
+                            type="text"
+                            value="Mahasiswa"
+                            readonly
+                            class="w-full pl-11 pr-10 py-3 bg-slate-100 border border-slate-200 rounded-lg text-sm font-semibold text-slate-500 outline-none cursor-not-allowed">
+                        <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">lock</span>
                     </div>
+                    <p class="text-[10px] text-slate-400 mt-1.5 italic">Jabatan ditentukan oleh sistem akademik dan tidak dapat diubah secara mandiri.</p>
                 </div>
 
                 {{-- Garis pemisah --}}
@@ -220,12 +218,9 @@
 
     function saveProfile() {
         const name = document.getElementById('inputName').value.trim();
-        const role = document.getElementById('inputRole');
-        const roleLabel = role.options[role.selectedIndex].text;
 
-        // Update display
+        // Update display Nama
         document.getElementById('displayName').textContent = name || 'Ahmad Fauzi';
-        document.getElementById('displayRole').textContent = roleLabel;
 
         // Update avatar initials src
         const avatarImg = document.querySelector('img[alt="Profile"]');
@@ -233,7 +228,7 @@
             avatarImg.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=002045&color=fff&size=128`;
         }
 
-        // Show success toast
+        // Tampilkan success toast
         const toast = document.createElement('div');
         toast.className = 'fixed bottom-6 right-6 z-50 bg-emerald-600 text-white px-5 py-3 rounded-xl shadow-lg flex items-center gap-2 text-sm font-bold transition-all';
         toast.innerHTML = '<span class="material-symbols-outlined text-base">check_circle</span> Profil berhasil disimpan!';

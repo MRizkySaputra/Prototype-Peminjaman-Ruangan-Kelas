@@ -149,7 +149,7 @@
                     @endforeach
                 </div>
                 <div id="calendar-grid" class="grid grid-cols-7">
-                    {{-- Grid di-generate via JavaScript --}}
+
                 </div>
             </div>
         </div>
@@ -159,7 +159,7 @@
             <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden mb-6">
                 <div class="overflow-x-hidden">
                     <div id="view-mingguan-inner" class="w-full relative bg-white">
-                        {{-- Akan Di-Generate Oleh JavaScript --}}
+
                     </div>
                 </div>
             </div>
@@ -181,9 +181,10 @@
                                      data-code="{{ $room['code'] }}" data-gedung="{{ $room['gedung'] }}">
                                     <p class="text-xs font-extrabold text-[#002045] truncate">{{ $room['name'] }}</p>
                                     <p class="text-[10px] text-slate-400 font-medium mt-0.5">{{ $room['building'] }} • {{ $room['code'] }}</p>
-                                    <div class="flex items-center justify-center gap-1 mt-1">
-                                        <span class="material-symbols-outlined text-[12px] text-slate-400">group</span>
-                                        <span class="text-[10px] text-slate-400 font-medium">{{ $room['capacity'] }} orang</span>
+                                    <div class="flex items-center justify-center mt-1.5">
+                                        <span class="px-2 py-0.5 bg-blue-50 text-blue-700 rounded text-[9px] font-bold border border-blue-100 flex items-center gap-1 w-max mx-auto">
+                                            <span class="material-symbols-outlined text-[10px]">group</span> {{ $room['capacity'] }} Orang
+                                        </span>
                                     </div>
                                 </div>
                             @endforeach
@@ -626,6 +627,11 @@
 
         document.getElementById('popupActionAvailable').classList.remove('hidden');
         document.getElementById('popupActionBooked').classList.add('hidden');
+        
+        let dateVal = toInputVal(currentDate);
+        let url = `/user/ajukan-detail?roomName=${encodeURIComponent(roomName)}&building=${encodeURIComponent(building)}&capacity=${capacity}&img=${encodeURIComponent(img)}&date=${dateVal}&hour=${hour}&desc=${encodeURIComponent(desc)}`;
+        
+        document.getElementById('popupSelectBtn').href = url;
         openPopup();
     }
 
