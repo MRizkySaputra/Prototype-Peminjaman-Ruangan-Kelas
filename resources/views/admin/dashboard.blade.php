@@ -55,7 +55,7 @@
             <p class="text-4xl font-black text-amber-600 font-headline">{{ $stats['total_permohonan'] ?? 0 }}</p>
             <div class="flex items-center gap-2 mt-3 pt-3 border-t border-slate-100">
                 <span class="flex items-center gap-1 text-xs font-bold text-red-500">
-                    <span class="material-symbols-outlined text-sm">priority_high</span> {{ $stats['permohonan_pending'] ?? 0 }}
+                    <span class="material-symbols-outlined text-sm">priority_high</span> {{ $stats['permohonan_menunggu'] ?? 0 }}
                 </span>
                 <span class="text-xs text-slate-400 font-medium">menunggu tinjauan</span>
             </div>
@@ -98,10 +98,10 @@
 
     </div>
 
-    {{-- Row: Permohonan Pending + Aktivitas Terkini --}}
+    {{-- Row: Permohonan Menunggu + Aktivitas Terkini --}}
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
 
-        {{-- Permohonan Pending --}}
+        {{-- Permohonan Menunggu --}}
         <div class="lg:col-span-7 bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
             <div class="px-6 py-5 border-b border-slate-200 flex items-center justify-between">
                 <div>
@@ -115,7 +115,7 @@
             <div class="divide-y divide-slate-100">
 
                 @php
-                $pendingList = [
+                $menungguList = [
                     ['init' => 'AN', 'color' => 'blue', 'name' => 'Aditya Nugraha', 'role' => 'Mahasiswa', 'room' => 'Lab Komputer 03', 'date' => '24 Okt 2026', 'time' => '09:00 - 12:00', 'purpose' => 'Praktikum Algoritma Lanjut', 'urgent' => true],
                     ['init' => 'SR', 'color' => 'purple', 'name' => 'Siti Rahayu', 'role' => 'Dosen', 'room' => 'Ruang Teater A', 'date' => '25 Okt 2026', 'time' => '13:00 - 15:30', 'purpose' => 'Seminar Nasional Robotika', 'urgent' => false],
                     ['init' => 'BEM', 'color' => 'orange', 'name' => 'BEM Fakultas Teknik', 'role' => 'Organisasi', 'room' => 'R. Rapat Senat', 'date' => '26 Okt 2026', 'time' => '10:00 - 11:30', 'purpose' => 'Rapat Koordinasi BEM', 'urgent' => false],
@@ -129,7 +129,7 @@
                 ];
                 @endphp
 
-                @foreach ($pendingList as $item)
+                @foreach ($menungguList as $item)
                 <div class="flex items-center gap-4 px-6 py-4 hover:bg-slate-50/50 transition-colors">
                     <div class="w-9 h-9 rounded-full {{ $colorMap[$item['color']] }} flex items-center justify-center text-xs font-bold shrink-0">
                         {{ $item['init'] }}
@@ -248,13 +248,13 @@
                 $todaySchedule = [
                     ['time' => '08:00 - 11:00', 'room' => 'Auditorium Utama', 'event' => 'Wisuda Gelombang II', 'person' => 'Diana Lestari', 'status' => 'approved'],
                     ['time' => '09:00 - 11:00', 'room' => 'Ruang Teater A', 'event' => 'Praktikum Algoritma', 'person' => 'Aditya Nugraha', 'status' => 'approved'],
-                    ['time' => '09:00 - 10:00', 'room' => 'R. Rapat Senat', 'event' => 'Rapat Koordinasi', 'person' => 'Bambang P.', 'status' => 'pending'],
+                    ['time' => '09:00 - 10:00', 'room' => 'R. Rapat Senat', 'event' => 'Rapat Koordinasi', 'person' => 'Bambang P.', 'status' => 'menunggu'],
                     ['time' => '13:00 - 15:00', 'room' => 'Lab Komputer 02', 'event' => 'Pemrograman Web', 'person' => 'Ahmad Fauzi', 'status' => 'approved'],
-                    ['time' => '13:00 - 15:00', 'room' => 'Auditorium Utama', 'event' => 'Seminar Nasional', 'person' => 'BEM FT', 'status' => 'pending'],
+                    ['time' => '13:00 - 15:00', 'room' => 'Auditorium Utama', 'event' => 'Seminar Nasional', 'person' => 'BEM FT', 'status' => 'menunggu'],
                 ];
                 $statusStyles = [
                     'approved' => ['dot' => 'bg-emerald-500', 'badge' => 'bg-emerald-100 text-emerald-700', 'label' => 'Disetujui'],
-                    'pending'  => ['dot' => 'bg-amber-400', 'badge' => 'bg-amber-100 text-amber-700', 'label' => 'Pending'],
+                    'menunggu'  => ['dot' => 'bg-amber-400', 'badge' => 'bg-amber-100 text-amber-700', 'label' => 'Menunggu'],
                 ];
                 @endphp
                 @foreach ($todaySchedule as $sched)

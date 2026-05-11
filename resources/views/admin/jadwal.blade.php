@@ -46,7 +46,7 @@
         {{-- Legenda Selalu Tampil --}}
         <div class="flex flex-wrap items-center gap-4 px-2 shrink-0">
             <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded-full bg-slate-300"></div><span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Kosong</span></div>
-            <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded-full bg-amber-400"></div><span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Pending</span></div>
+            <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded-full bg-amber-400"></div><span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Menunggu</span></div>
             <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded-full bg-emerald-500"></div><span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Disetujui</span></div>
             <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded-full bg-red-400"></div><span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Ditolak</span></div>
         </div>
@@ -71,7 +71,7 @@
             <input id="filterTanggal" class="flex-1 min-w-[130px] bg-slate-50 border border-slate-200 rounded-lg py-2 px-3 text-sm font-medium focus:ring-2 focus:ring-[#002045]/20 outline-none" type="date" value="2026-10-24">
             <select class="flex-1 min-w-[120px] bg-slate-50 border border-slate-200 rounded-lg py-2 px-3 text-sm font-medium focus:ring-2 focus:ring-[#002045]/20 outline-none">
                 <option value="">Semua Status</option>
-                <option value="pending">Pending</option>
+                <option value="menunggu">Menunggu</option>
                 <option value="approved">Disetujui</option>
                 <option value="rejected">Ditolak</option>
             </select>
@@ -89,19 +89,19 @@
         ];
 
         $bookings = [
-            'A-101' => [[8, 11, 'approved', 'Diana Lestari', 'Wisuda Gelombang II'], [13, 15, 'pending', 'BEM FT', 'Seminar Nasional']],
-            'A-102' => [[9, 11, 'approved', 'Aditya Nugraha', 'Praktikum Algoritma'], [14, 16, 'pending', 'Siti Rahayu', 'Workshop Desain']],
+            'A-101' => [[8, 11, 'approved', 'Diana Lestari', 'Wisuda Gelombang II'], [13, 15, 'menunggu', 'BEM FT', 'Seminar Nasional']],
+            'A-102' => [[9, 11, 'approved', 'Aditya Nugraha', 'Praktikum Algoritma'], [14, 16, 'menunggu', 'Siti Rahayu', 'Workshop Desain']],
             'B-201' => [[7, 9, 'approved', 'Rina Marlina', 'Praktikum Jaringan'], [10, 12, 'rejected', 'Budi Santoso', 'Ujian Susulan']],
             'B-202' => [[13, 15, 'approved', 'Ahmad Fauzi', 'Pemrograman Web']],
             'B-301' => [],
-            'C-101' => [[9, 10, 'pending', 'Bambang P.', 'Rapat Koordinasi']],
+            'C-101' => [[9, 10, 'menunggu', 'Bambang P.', 'Rapat Koordinasi']],
         ];
 
         $hours = range(7, 20);
 
         $statusConfig = [
             'available' => ['bg' => 'bg-slate-100', 'hover' => 'hover:bg-slate-200', 'text' => '', 'border' => 'border-slate-200', 'dot' => 'bg-slate-300', 'label' => ''],
-            'pending'   => ['bg' => 'bg-amber-50',  'hover' => 'hover:bg-amber-100', 'text' => 'text-amber-800', 'border' => 'border-amber-200', 'dot' => 'bg-amber-400', 'label' => 'Pending'],
+            'menunggu'   => ['bg' => 'bg-amber-50',  'hover' => 'hover:bg-amber-100', 'text' => 'text-amber-800', 'border' => 'border-amber-200', 'dot' => 'bg-amber-400', 'label' => 'Menunggu'],
             'approved'  => ['bg' => 'bg-emerald-50','hover' => 'hover:bg-emerald-100','text' => 'text-emerald-800','border' => 'border-emerald-200', 'dot' => 'bg-emerald-500', 'label' => 'Disetujui'],
             'rejected'  => ['bg' => 'bg-red-50',    'hover' => 'hover:bg-red-100',   'text' => 'text-red-800',   'border' => 'border-red-200', 'dot' => 'bg-red-400', 'label' => 'Ditolak'],
         ];
@@ -119,7 +119,7 @@
                     @endforeach
                 </div>
                 <div id="calendar-grid" class="grid grid-cols-7">
-                    {{-- Grid di-generate via JavaScript --}}
+
                 </div>
             </div>
         </div>
@@ -129,7 +129,7 @@
             <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden mb-6">
                 <div class="overflow-x-hidden">
                     <div id="view-mingguan-inner" class="w-full relative bg-white">
-                        {{-- Akan Di-Generate Oleh JavaScript agar Strukturnya Persis View Harian tanpa overflow X --}}
+
                     </div>
                 </div>
             </div>
@@ -211,7 +211,7 @@
                                                         <a href="/admin/detail-permohonan" class="p-1.5 bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white rounded transition-all" title="Lihat Detail">
                                                             <span class="material-symbols-outlined text-sm">visibility</span>
                                                         </a>
-                                                        @if ($slotStatus === 'pending')
+                                                        @if ($slotStatus === 'menunggu')
                                                             <button class="p-1.5 bg-emerald-50 text-emerald-600 hover:bg-emerald-600 hover:text-white rounded transition-all" title="Setujui">
                                                                 <span class="material-symbols-outlined text-sm">check</span>
                                                             </button>
@@ -448,7 +448,7 @@
                 if(dayEvents.length > 0) {
                     html += `<div class="flex flex-col gap-1 w-full h-full">`;
                     dayEvents.forEach(e => {
-                        let cfg = statusConfig[e.status] || statusConfig['pending'];
+                        let cfg = statusConfig[e.status] || statusConfig['menunggu'];
                         html += `
                             <div class="weekly-event-item w-full min-h-[46px] h-full rounded-lg ${cfg.bg} border ${cfg.border} px-1.5 md:px-2 py-1 relative overflow-hidden group/item cursor-pointer hover:opacity-80"
                                  data-code="${e.roomCode}" data-gedung="${e.gedung}" 
@@ -500,7 +500,7 @@
                 html += `<span class="w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold ${isToday ? 'bg-[#002045] text-white shadow-md' : 'text-slate-500'} mb-2">${actualDate}</span>`;
                 let dayEvents = allEvents.filter(e => e.dateStr === dateStr);
                 dayEvents.forEach(e => {
-                    let cfg = statusConfig[e.status] || statusConfig['pending'];
+                    let cfg = statusConfig[e.status] || statusConfig['menunggu'];
                     html += `<div class="monthly-event-item px-2 py-1 ${cfg.bg} ${cfg.text} text-[9px] font-bold rounded mb-1 truncate cursor-pointer hover:opacity-80 transition-opacity" 
                                   title="${e.title}" data-code="${e.roomCode}" data-gedung="${e.gedung}">
                                 ${padDate(e.startHour)}:00 - ${e.title}

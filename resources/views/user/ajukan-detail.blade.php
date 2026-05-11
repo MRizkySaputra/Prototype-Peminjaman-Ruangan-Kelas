@@ -4,6 +4,39 @@
 
 @section('content')
 
+    @php
+        $data = [
+            'ruangan'   => request('roomName', 'Ruang Teater'),
+            'gedung'    => request('building', 'A'),
+            'kapasitas' => request('capacity', 50),
+            'image'     => request('img', 'https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=400&q=80'),
+            'tanggal'   => request('date', '2026-10-24'),
+            'jam'       => request('hour', 10),
+            'desc'      => request('desc', 'Tempat duduk berundak, Proyektor 4K, dan AC Central'),
+        ];
+
+        // Format waktu mulai dan selesai
+        $waktu_mulai = str_pad($data['jam'], 2, '0', STR_PAD_LEFT) . ':00';
+        $waktu_selesai = str_pad($data['jam'] + 1, 2, '0', STR_PAD_LEFT) . ':00';
+
+        // Format nama gedung
+        $nama_gedung = str_starts_with(strtolower($data['gedung']), 'gedung') 
+                       ? $data['gedung'] 
+                       : 'Gedung ' . $data['gedung'];
+
+        // Proses kalimat deskripsi menjadi array fasilitas yang rapi
+        $cleanedDesc = preg_replace('/^(Dilengkapi|Ruang teater dengan|Lab komputer dengan|Ruang seminar kapasitas \d+ orang dengan|Ruang rapat formal dengan)\s+/i', '', $data['desc']);
+        $fasilitas_raw = preg_split('/\s*,\s*dan\s+|\s+dan\s+|\s*,\s*/i', $cleanedDesc);
+        
+        $fasilitas = [];
+        foreach($fasilitas_raw as $fac) {
+            $fac = rtrim(trim($fac), '.');
+            if(!empty($fac)) {
+                $fasilitas[] = ucfirst($fac);
+            }
+        }
+    @endphp
+
     {{-- Breadcrumb --}}
     <nav class="mb-8 flex items-center gap-2 text-sm text-slate-500">
         <a class="hover:text-[#002045] font-medium transition-colors flex items-center gap-1" href="/user/ajukan">
@@ -51,16 +84,14 @@
             <div class="bg-slate-50 p-6 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between border border-slate-200 mb-8">
                 <div class="flex items-center gap-5">
                     <div class="w-16 h-16 rounded-lg overflow-hidden shrink-0 border border-slate-200">
-                        <img alt="Ruang Teater"
-                             class="w-full h-full object-cover"
-                             src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=200&q=80">
+                        <img alt="Ruang Terpilih" class="w-full h-full object-cover" src="{{ $data['image'] }}">
                     </div>
                     <div>
                         <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Ruangan Terpilih</label>
-                        <h3 class="text-xl font-bold text-[#002045] font-headline">Ruang Teater - Gedung A</h3>
+                        <h3 class="text-xl font-bold text-[#002045] font-headline">{{ $data['ruangan'] }} - {{ $nama_gedung }}</h3>
                         <div class="flex items-center gap-3 mt-1">
                             <span class="flex items-center gap-1 text-xs text-slate-500 font-medium">
-                                <span class="material-symbols-outlined text-sm">groups</span> 50 Kapasitas
+                                <span class="material-symbols-outlined text-sm">groups</span> {{ $data['kapasitas'] }} Kapasitas
                             </span>
                         </div>
                     </div>
@@ -79,8 +110,8 @@
                         <label class="block text-xs font-bold text-[#002045] uppercase tracking-wider mb-2">Tanggal Peminjaman</label>
                         <div class="relative">
                             <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">calendar_today</span>
-                            <input class="w-full pl-10 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-[#002045]/20 focus:border-[#002045] focus:bg-white outline-none text-sm"
-                                   type="date" value="2026-10-24">
+                            <input id="inputDate" class="w-full pl-10 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-[#002045]/20 focus:border-[#002045] focus:bg-white outline-none text-sm"
+                                   type="date" value="{{ $data['tanggal'] }}">
                         </div>
                     </div>
 
@@ -89,16 +120,16 @@
                             <label class="block text-xs font-bold text-[#002045] uppercase tracking-wider mb-2">Waktu Mulai</label>
                             <div class="relative">
                                 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">schedule</span>
-                                <input class="w-full pl-10 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-[#002045]/20 outline-none text-sm"
-                                       type="time" value="10:00">
+                                <input id="inputTimeStart" class="w-full pl-10 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-[#002045]/20 outline-none text-sm"
+                                       type="time" value="{{ $waktu_mulai }}">
                             </div>
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-[#002045] uppercase tracking-wider mb-2">Waktu Selesai</label>
                             <div class="relative">
                                 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">schedule</span>
-                                <input class="w-full pl-10 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-[#002045]/20 outline-none text-sm"
-                                       type="time" value="11:00">
+                                <input id="inputTimeEnd" class="w-full pl-10 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-[#002045]/20 outline-none text-sm"
+                                       type="time" value="{{ $waktu_selesai }}">
                             </div>
                         </div>
                     </div>
@@ -107,10 +138,10 @@
                         <label class="block text-xs font-bold text-[#002045] uppercase tracking-wider mb-2">Estimasi Jumlah Peserta</label>
                         <div class="relative">
                             <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">group_add</span>
-                            <input class="w-full pl-10 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-[#002045]/20 outline-none text-sm"
-                                   placeholder="Contoh: 40" type="number" min="1">
+                            <input id="inputParticipant" class="w-full pl-10 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-[#002045]/20 outline-none text-sm"
+                                   placeholder="Contoh: {{ floor($data['kapasitas'] * 0.8) }}" type="number" max="{{ $data['kapasitas'] }}" min="1">
                         </div>
-                        <p class="text-[10px] text-slate-400 mt-2 italic">*Maksimal kapasitas ruangan ini adalah 50 orang.</p>
+                        <p class="text-[10px] text-slate-400 mt-2 italic">*Maksimal kapasitas ruangan ini adalah {{ $data['kapasitas'] }} orang.</p>
                     </div>
 
                     <div class="pt-2">
@@ -119,21 +150,17 @@
                             <p class="text-xs text-slate-500 mb-3 leading-relaxed">
                                 Ruangan ini dilengkapi dengan fasilitas berikut yang dapat Anda gunakan selama sesi peminjaman:
                             </p>
-                            <ul class="space-y-2.5">
-                                {{-- Looping data fasilitas dari Controller --}}
-                                @forelse ($fasilitas ?? [] as $item)
-                                    <li class="flex items-center gap-3 text-sm text-[#002045] font-semibold">
-                                        <div class="w-7 h-7 rounded bg-white border {{ $item['border_color'] }} flex items-center justify-center {{ $item['text_color'] }} shrink-0">
-                                            <span class="material-symbols-outlined text-[16px]">{{ $item['icon'] }}</span>
-                                        </div>
-                                        {{ $item['nama'] }}
-                                    </li>
+                            
+                            {{-- Fasilitas --}}
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                @forelse($fasilitas as $fac)
+                                    <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full border border-blue-100">
+                                        {{ $fac }}
+                                    </span>
                                 @empty
-                                    <li class="text-sm text-slate-500 italic">
-                                        Tidak ada fasilitas khusus yang terdaftar untuk ruangan ini.
-                                    </li>
+                                    <span class="text-sm text-slate-500 italic">Fasilitas standar tersedia.</span>
                                 @endforelse
-                            </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -143,23 +170,23 @@
                     {{-- Pilihan Jenis Kegiatan --}}
                     <div>
                         <label class="block text-xs font-bold text-[#002045] uppercase tracking-wider mb-2">Jenis Kegiatan</label>
-                        <select class="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-[#002045]/20 outline-none text-sm font-medium">
+                        <select id="inputType" class="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-[#002045]/20 outline-none text-sm font-medium">
                             <option value="" disabled selected>Pilih kategori kegiatan</option>
-                            <option value="sidang">Sidang</option>
-                            <option value="ormawa">Ormawa</option>
-                            <option value="fakultas">Fakultas</option>
+                            <option value="Sidang">Sidang</option>
+                            <option value="Organisasi Mahasiswa (Ormawa)">Ormawa</option>
+                            <option value="Kegiatan Fakultas">Fakultas</option>
                         </select>
                     </div>
                     
                     <div>
                         <label class="block text-xs font-bold text-[#002045] uppercase tracking-wider mb-2">Nama Kegiatan</label>
-                        <input class="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-[#002045]/20 outline-none text-sm"
+                        <input id="inputEventName" class="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-[#002045]/20 outline-none text-sm"
                                placeholder="Masukkan judul kegiatan" type="text">
                     </div>
 
                     <div>
                         <label class="block text-xs font-bold text-[#002045] uppercase tracking-wider mb-2">Keperluan</label>
-                        <textarea class="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-[#002045]/20 outline-none text-sm resize-none"
+                        <textarea id="inputPurpose" class="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-[#002045]/20 outline-none text-sm resize-none"
                                   placeholder="Jelaskan secara detail maksud penggunaan ruangan ini..."
                                   rows="4"></textarea>
                     </div>
@@ -184,11 +211,12 @@
                    class="px-8 py-3.5 rounded-lg border border-slate-200 bg-white text-slate-600 font-bold text-sm hover:bg-slate-50 flex items-center gap-2">
                     <span class="material-symbols-outlined text-lg">chevron_left</span> Kembali
                 </a>
-                <a href="/user/ajukan-konfirmasi"
-                   class="px-10 py-3.5 rounded-lg bg-primary-gradient text-white font-bold text-sm shadow-lg hover:opacity-95 flex items-center gap-2">
+                
+                <button type="button" onclick="goToConfirmation()"
+                        class="px-10 py-3.5 rounded-lg bg-primary-gradient text-white font-bold text-sm shadow-lg hover:opacity-95 flex items-center gap-2">
                     Lanjutkan ke Konfirmasi
                     <span class="material-symbols-outlined text-lg">chevron_right</span>
-                </a>
+                </button>
             </div>
         </form>
     </div>
@@ -203,3 +231,36 @@
     </div>
 
 @endsection
+
+@push('scripts')
+<script>
+    // Fungsi untuk mengirim seluruh data ke halaman konfirmasi
+    function goToConfirmation() {
+        const params = new URLSearchParams(window.location.search);
+        
+        const date = document.getElementById('inputDate').value;
+        const timeStart = document.getElementById('inputTimeStart').value;
+        const timeEnd = document.getElementById('inputTimeEnd').value;
+        const participant = document.getElementById('inputParticipant').value;
+        
+        const typeSelect = document.getElementById('inputType');
+        const eventType = typeSelect.options[typeSelect.selectedIndex].text; 
+        
+        const eventName = document.getElementById('inputEventName').value;
+        const purpose = document.getElementById('inputPurpose').value;
+
+        params.set('date', date);
+        params.set('timeStart', timeStart);
+        params.set('timeEnd', timeEnd);
+        params.set('participant', participant);
+        
+        if(eventType !== 'Pilih kategori kegiatan') {
+            params.set('eventType', eventType);
+        }
+        params.set('eventName', eventName);
+        params.set('purpose', purpose);
+
+        window.location.href = `/user/ajukan-konfirmasi?${params.toString()}`;
+    }
+</script>
+@endpush

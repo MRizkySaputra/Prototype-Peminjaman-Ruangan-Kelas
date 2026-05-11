@@ -89,7 +89,7 @@
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-2">
                             <span class="w-3 h-3 rounded-full bg-amber-300"></span>
-                            <span class="text-sm font-medium text-slate-700">Pending</span>
+                            <span class="text-sm font-medium text-slate-700">Menunggu</span>
                         </div>
                         <span class="text-sm font-bold text-amber-600">20%</span>
                     </div>
@@ -132,7 +132,7 @@
                 <select class="flex-1 min-w-[140px] bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 focus:ring-2 focus:ring-[#002045]/20 outline-none transition-all">
                     <option value="">Semua Status</option>
                     <option value="approved">Disetujui</option>
-                    <option value="pending">Pending</option>
+                    <option value="menunggu">Menunggu</option>
                     <option value="rejected">Ditolak</option>
                 </select>
             </div>
